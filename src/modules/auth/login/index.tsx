@@ -74,7 +74,7 @@ const LoginPage = (props: any) => {
                     </button>
                   </form>
                   <p className="text-center">
-                    Don't have an account yet? Make a new account{" "}
+                    Don`&apos;`t have an account yet? Make a new account{" "}
                     <a className="link">here</a>
                   </p>
                 </div>
