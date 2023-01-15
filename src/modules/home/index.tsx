@@ -2,13 +2,14 @@ import homeImg from "@/public/assets/home1.png";
 import homeCard1 from "@/public/assets/home3.png";
 import homeCard2 from "@/public/assets/home2.png";
 import Image from "next/image";
+import { BasePage } from "../basePage";
 
 const Home = () => {
   return (
     <>
       <div className="bg-[#003566] rounded-full w-3/4 aspect-square absolute -z-10 -top-1/4 -left-1/4"></div>
-      <div className="container mx-auto text-white">
-        <div className="py-44 grid grid-cols-2 gap-20">
+      <BasePage>
+        <div className="py-44 pt-56 grid grid-cols-2 gap-20">
           <div className="flex flex-col justify-center">
             <div className="text-4xl font-bold">
               Tempat <span className="text-bold">Belajar</span> dan{" "}
@@ -75,7 +76,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </BasePage>
     </>
   );
 };
