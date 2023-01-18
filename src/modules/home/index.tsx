@@ -1,4 +1,4 @@
-import { BasePage } from "../basepage";
+import { Basepage } from "../basepage";
 import { BookType } from "./components/bookType";
 import { Check } from "./components/check";
 import { Feature } from "./components/feature";
@@ -9,13 +9,13 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#003566] rounded-full w-3/4 aspect-square absolute -z-10 -top-1/4 -left-1/4"></div>
-      <BasePage>
+      <Basepage>
         <Welcome />
         <Feature />
         <Check />
         <Plan />
         <BookType />
-      </BasePage>
+      </Basepage>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
 
-export const BasePage = ({ children }: any) => {
+export const Basepage = ({ children }: any) => {
   return (
     <>
       <Navbar />
