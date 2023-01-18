@@ -1,4 +1,4 @@
-import { Basepage } from "../basepage";
+import { Basepage } from "../basePage";
 import { BookType } from "./components/bookType";
 import { Check } from "./components/check";
 import { Feature } from "./components/feature";
