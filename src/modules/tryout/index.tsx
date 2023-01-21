@@ -4,6 +4,11 @@ import { ListNomor } from "./components/listNomor";
 import { Navigation } from "./components/navigation";
 import { Pertanyaan } from "./components/pertanyaan";
 
+export interface JawabanStateProps {
+  soalId: string;
+  jawabanId: string;
+}
+
 const soalDummy = [
   {
     id: "1",
@@ -120,7 +125,7 @@ const soalDummy = [
 export const Tryout = () => {
   const [soal, setSoal] = useState(soalDummy);
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [jawaban, setJawaban] = useState<any[]>([]);
+  const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
 
   const loopingStateJawaban = (length: number) => {
     let jawabanArr = [];
@@ -135,10 +140,12 @@ export const Tryout = () => {
     setJawaban(jawabanArr);
   };
 
-  const storingJawaban = (index: number, jawabanId: string) => {
+  const storingJawaban = (index: number, e: any) => {
+    const value = e.target.value;
+
     setJawaban((prev) => {
       const newArr = prev.slice();
-      newArr[index].jawabanId = jawabanId;
+      newArr[index].jawabanId = value;
 
       return newArr;
     });
@@ -165,6 +172,8 @@ export const Tryout = () => {
                   soal={soal}
                   setSoal={setSoal}
                   currentPage={currentPage}
+                  storingJawaban={storingJawaban}
+                  jawaban={jawaban}
                 >
                   <Navigation
                     currentPage={currentPage}
@@ -178,6 +187,7 @@ export const Tryout = () => {
                   length={soal.length}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
+                  jawaban={jawaban}
                 />
               </div>
             </div>

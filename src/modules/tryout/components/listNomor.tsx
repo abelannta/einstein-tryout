@@ -1,11 +1,14 @@
+import { JawabanStateProps } from "..";
+
 interface listNomorProps {
   length: number;
   currentPage: number;
   setCurrentPage: (e: any) => void;
+  jawaban: JawabanStateProps[];
 }
 
 export const ListNomor = (props: listNomorProps) => {
-  const { length, currentPage, setCurrentPage } = props;
+  const { length, currentPage, setCurrentPage, jawaban } = props;
 
   const handleNumberClick = (e: number) => {
     setCurrentPage(e);
@@ -18,8 +21,8 @@ export const ListNomor = (props: listNomorProps) => {
         <button
           key={i}
           className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl ${
-            i === currentPage ? `bg-background text-bold` : ""
-          }`}
+            i === currentPage ? `border-background font-bold` : ""
+          } ${jawaban[i]?.jawabanId != "" ? "bg-background text-bold" : ""}`}
           onClick={() => handleNumberClick(i)}
         >
           {i + 1}
