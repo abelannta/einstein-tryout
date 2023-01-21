@@ -4,8 +4,8 @@ export const Pertanyaan = () => {
       <div className="bg-bold p-10 rounded-xl mb-10">
         <p className="text-xl">
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of.
+          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of.
         </p>
       </div>
       <form>
