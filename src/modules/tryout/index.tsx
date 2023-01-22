@@ -3,124 +3,12 @@ import { Basepage } from "../basePage";
 import { ListNomor } from "./components/listNomor";
 import { Navigation } from "./components/navigation";
 import { Pertanyaan } from "./components/pertanyaan";
+import { soalDummy } from "@/lib/tryout/soal";
 
 export interface JawabanStateProps {
   soalId: string;
   jawabanId: string;
 }
-
-const soalDummy = [
-  {
-    id: "1",
-    pertanyaan: "Apa kamu itu?",
-    jawaban: [
-      {
-        id: "1",
-        value: "Hantu",
-      },
-      {
-        id: "2",
-        value: "Manusia",
-      },
-      {
-        id: "3",
-        value: "Hewan",
-      },
-      {
-        id: "4",
-        value: "Tanaman",
-      },
-    ],
-  },
-  {
-    id: "2",
-    pertanyaan: "Siapa nama kamu?",
-    jawaban: [
-      {
-        id: "1",
-        value: "Asep",
-      },
-      {
-        id: "2",
-        value: "Ijat",
-      },
-      {
-        id: "3",
-        value: "Kuroku",
-      },
-      {
-        id: "4",
-        value: "Anas",
-      },
-    ],
-  },
-  {
-    id: "3",
-    pertanyaan: "Apa kamu itu?",
-    jawaban: [
-      {
-        id: "1",
-        value: "Hantu",
-      },
-      {
-        id: "2",
-        value: "Manusia",
-      },
-      {
-        id: "3",
-        value: "Hewan",
-      },
-      {
-        id: "4",
-        value: "Tanaman",
-      },
-    ],
-  },
-  {
-    id: "4",
-    pertanyaan: "Ibukota dari negara Thailand?",
-    jawaban: [
-      {
-        id: "1",
-        value: "Bangkok",
-      },
-      {
-        id: "2",
-        value: "Manila",
-      },
-      {
-        id: "3",
-        value: "Kuala Lumpur",
-      },
-      {
-        id: "4",
-        value: "Berlin",
-      },
-    ],
-  },
-  {
-    id: "5",
-    pertanyaan: "Warna yang paling menyerap panas adalah",
-    jawaban: [
-      {
-        id: "1",
-        value: "Merah",
-      },
-      {
-        id: "2",
-        value: "Hitam",
-      },
-      {
-        id: "3",
-        value: "Putih",
-      },
-      {
-        id: "4",
-        value: "Kuning",
-      },
-    ],
-  },
-];
 
 export const Tryout = () => {
   const [soal, setSoal] = useState(soalDummy);
@@ -149,10 +37,18 @@ export const Tryout = () => {
 
       return newArr;
     });
+
+    localStorage.setItem("draft", JSON.stringify(jawaban));
   };
 
   useEffect(() => {
+    // @ts-ignore
+    const draft = JSON.parse(localStorage.getItem("draft"));
     loopingStateJawaban(soal.length);
+
+    if (draft) {
+      setJawaban(draft);
+    }
   }, []);
 
   return (
@@ -170,7 +66,6 @@ export const Tryout = () => {
               <div className="col-span-4">
                 <Pertanyaan
                   soal={soal}
-                  setSoal={setSoal}
                   currentPage={currentPage}
                   storingJawaban={storingJawaban}
                   jawaban={jawaban}

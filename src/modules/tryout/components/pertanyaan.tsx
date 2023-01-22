@@ -2,7 +2,6 @@ import { JawabanStateProps } from "..";
 
 interface PertanyaanProps {
   soal: any;
-  setSoal: (e: any) => void;
   currentPage: number;
   children: any;
   jawaban: JawabanStateProps[];
@@ -10,8 +9,7 @@ interface PertanyaanProps {
 }
 
 export const Pertanyaan = (props: PertanyaanProps) => {
-  const { soal, setSoal, currentPage, children, storingJawaban, jawaban } =
-    props;
+  const { soal, currentPage, children, storingJawaban, jawaban } = props;
 
   return (
     <div>
