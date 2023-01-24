@@ -1,3 +1,3 @@
-import { Tryout } from "@/modules/tryout";
+import { TryoutHome } from "@/modules/home/tryout";
 
-export default Tryout;
+export default TryoutHome;

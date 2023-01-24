@@ -4,7 +4,7 @@ import Image from "next/legacy/image";
 export const Welcome = () => {
   return (
     <div className="container mx-auto py-44 pt-56 grid grid-cols-2 gap-20">
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center text-white">
         <div className="text-4xl font-bold">
           Tempat <span className="text-bold">Belajar</span> dan{" "}
           <span className="text-bold">Berlatih</span> Untuk Masuk Kampus

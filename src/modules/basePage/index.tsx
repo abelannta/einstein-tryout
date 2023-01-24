@@ -5,7 +5,7 @@ export const Basepage = ({ children }: any) => {
   return (
     <>
       <Navbar />
-      <div className=" text-white">{children}</div>
+      <div className=" text-black">{children}</div>
       <Footer />
     </>
   );

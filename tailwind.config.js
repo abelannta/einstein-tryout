@@ -20,6 +20,10 @@ module.exports = {
         bold: "#FFC300",
       },
     },
+    container: {
+      center: true,
+      padding: "2rem",
+    },
   },
   daisyui: {
     themes: ["light"],
