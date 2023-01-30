@@ -5,7 +5,7 @@ export const TryoutHome = () => {
     <>
       <div className="bg-[#003566] rounded-full w-1/2 aspect-square absolute -z-10 -top-0 right-10"></div>
       <Basepage>
-        <div className="h-screen container flex items-center gap-20 text-white">
+        <div className="h-screen container flex items-center gap-20">
           <div className="flex flex-col justify-center">
             <div className="text-4xl font-bold leading-normal">
               Siap Hadapi <span className="text-bold">Ujian</span> dengan

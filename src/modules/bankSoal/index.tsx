@@ -4,12 +4,17 @@ import { ListNomor } from "../components/listNomor";
 import { Navigation } from "../components/navigation";
 import { Pertanyaan } from "../components/pertanyaan";
 import { soalDummy } from "@/lib/tryout/soal";
-import { JawabanStateProps } from "@/lib/props/tryout";
 
-export const Tryout = () => {
+export interface JawabanStateProps {
+  soalId: string;
+  jawabanId: string;
+}
+
+export const BankSoal = () => {
   const [soal, setSoal] = useState(soalDummy);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
+  const [submited, setSubmited] = useState(false);
 
   const loopingStateJawaban = (length: number) => {
     let jawabanArr = [];
@@ -35,6 +40,10 @@ export const Tryout = () => {
     });
 
     localStorage.setItem("draft", JSON.stringify(jawaban));
+  };
+
+  const handleSubmit = () => {
+    setSubmited(true);
   };
 
   useEffect(() => {
@@ -83,6 +92,7 @@ export const Tryout = () => {
                   <label
                     htmlFor="my-modal-6"
                     className="btn w-full bg-background text-bold"
+                    onClick={handleSubmit}
                   >
                     Submit
                   </label>

@@ -1,14 +1,15 @@
-import { JawabanStateProps } from "..";
+import { JawabanStateProps } from "@/lib/props/tryout";
 
 interface listNomorProps {
   length: number;
   currentPage: number;
   setCurrentPage: (e: any) => void;
   jawaban: JawabanStateProps[];
+  children: React.ReactNode;
 }
 
 export const ListNomor = (props: listNomorProps) => {
-  const { length, currentPage, setCurrentPage, jawaban } = props;
+  const { length, currentPage, setCurrentPage, jawaban, children } = props;
 
   const handleNumberClick = (e: number) => {
     setCurrentPage(e);
@@ -37,9 +38,7 @@ export const ListNomor = (props: listNomorProps) => {
     <div className="border border-gray-300 p-10 rounded-xl">
       <h2 className="text-2xl font-bold mb-5">Daftar Soal</h2>
       <div className="grid grid-cols-5 gap-3 mb-10">{loopingNumber()}</div>
-      <button className="p-3 w-full flex justify-center bg-background text-bold font-bold rounded-xl">
-        Submit
-      </button>
+      {children}
     </div>
   );
 };

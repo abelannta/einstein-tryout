@@ -38,7 +38,7 @@ export const Profile = () => {
           <div className="text-4xl font-bold">Profil</div>
           <div className="grid grid-cols-4 gap-20 mt-20">
             <div className="col-span-1">
-              <div className="rounded-full w-full aspect-square mb-10 overflow-hidden">
+              <div className="rounded-full w-full aspect-square mb-10 overflow-hidden border border-gray-300">
                 <Image src={fotoProfil} alt="Foto Profil" />
               </div>
               <div className="text-2xl font-bold">Abel Ananta</div>

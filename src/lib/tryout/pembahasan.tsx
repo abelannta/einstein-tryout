@@ -1,334 +1,284 @@
-export const soalDummy = {
+export const pembahasanDummy = {
   id: 1,
-  isDone: false,
-  listData: [
+  totalCorrect: 6,
+  data: [
     {
       id: "1",
       pertanyaan: "Apa kamu itu?",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Manusia",
+      data: [
         {
           id: "1",
           value: "Hantu",
+          correct: false,
         },
         {
           id: "2",
           value: "Manusia",
+          correct: true,
         },
         {
           id: "3",
           value: "Hewan",
+          correct: false,
         },
         {
           id: "4",
           value: "Tanaman",
+          correct: false,
         },
       ],
     },
     {
       id: "2",
       pertanyaan: "Siapa nama kamu?",
-      jawaban: [
+      isCorrect: false,
+      userAnswer: "Asep",
+      data: [
         {
           id: "1",
           value: "Asep",
+          correct: false,
         },
         {
           id: "2",
           value: "Ijat",
+          correct: false,
         },
         {
           id: "3",
           value: "Kuroku",
+          correct: false,
         },
         {
           id: "4",
           value: "Anas",
+          correct: true,
         },
       ],
     },
     {
       id: "3",
       pertanyaan: "Apa kamu itu?",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Manusia",
+      data: [
         {
           id: "1",
           value: "Hantu",
+          correct: false,
         },
         {
           id: "2",
           value: "Manusia",
+          correct: true,
         },
         {
           id: "3",
           value: "Hewan",
+          correct: false,
         },
         {
           id: "4",
           value: "Tanaman",
+          correct: false,
         },
       ],
     },
     {
       id: "4",
       pertanyaan: "Ibukota dari negara Thailand?",
-      jawaban: [
+      isCorrect: false,
+      userAnswer: "Kuala Lumpur",
+      data: [
         {
           id: "1",
           value: "Bangkok",
+          correct: true,
         },
         {
           id: "2",
           value: "Manila",
+          correct: false,
         },
         {
           id: "3",
           value: "Kuala Lumpur",
+          correct: false,
         },
         {
           id: "4",
           value: "Berlin",
+          correct: false,
         },
       ],
     },
     {
       id: "5",
       pertanyaan: "Warna yang paling menyerap panas adalah",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Hitam",
+      data: [
         {
           id: "1",
           value: "Merah",
+          correct: false,
         },
         {
           id: "2",
           value: "Hitam",
+          correct: true,
         },
         {
           id: "3",
           value: "Putih",
+          correct: false,
         },
         {
           id: "4",
           value: "Kuning",
+          correct: false,
         },
       ],
     },
     {
       id: "1",
       pertanyaan: "Apa kamu itu?",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Manusia",
+      data: [
         {
           id: "1",
           value: "Hantu",
+          correct: false,
         },
         {
           id: "2",
           value: "Manusia",
+          correct: true,
         },
         {
           id: "3",
           value: "Hewan",
+          correct: false,
         },
         {
           id: "4",
           value: "Tanaman",
+          correct: false,
         },
       ],
     },
     {
       id: "2",
       pertanyaan: "Siapa nama kamu?",
-      jawaban: [
+      isCorrect: false,
+      userAnswer: "Asep",
+      data: [
         {
           id: "1",
           value: "Asep",
+          correct: false,
         },
         {
           id: "2",
           value: "Ijat",
+          correct: false,
         },
         {
           id: "3",
           value: "Kuroku",
+          correct: false,
         },
         {
           id: "4",
           value: "Anas",
+          correct: true,
         },
       ],
     },
     {
       id: "3",
       pertanyaan: "Apa kamu itu?",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Manusia",
+      data: [
         {
           id: "1",
           value: "Hantu",
+          correct: false,
         },
         {
           id: "2",
           value: "Manusia",
+          correct: true,
         },
         {
           id: "3",
           value: "Hewan",
+          correct: false,
         },
         {
           id: "4",
           value: "Tanaman",
+          correct: false,
         },
       ],
     },
     {
       id: "4",
       pertanyaan: "Ibukota dari negara Thailand?",
-      jawaban: [
+      isCorrect: false,
+      userAnswer: "Kuala Lumpur",
+      data: [
         {
           id: "1",
           value: "Bangkok",
+          correct: true,
         },
         {
           id: "2",
           value: "Manila",
+          correct: false,
         },
         {
           id: "3",
           value: "Kuala Lumpur",
+          correct: false,
         },
         {
           id: "4",
           value: "Berlin",
+          correct: false,
         },
       ],
     },
     {
       id: "5",
       pertanyaan: "Warna yang paling menyerap panas adalah",
-      jawaban: [
+      isCorrect: true,
+      userAnswer: "Hitam",
+      data: [
         {
           id: "1",
           value: "Merah",
+          correct: false,
         },
         {
           id: "2",
           value: "Hitam",
+          correct: true,
         },
         {
           id: "3",
           value: "Putih",
+          correct: false,
         },
         {
           id: "4",
           value: "Kuning",
-        },
-      ],
-    },
-    {
-      id: "1",
-      pertanyaan: "Apa kamu itu?",
-      jawaban: [
-        {
-          id: "1",
-          value: "Hantu",
-        },
-        {
-          id: "2",
-          value: "Manusia",
-        },
-        {
-          id: "3",
-          value: "Hewan",
-        },
-        {
-          id: "4",
-          value: "Tanaman",
-        },
-      ],
-    },
-    {
-      id: "2",
-      pertanyaan: "Siapa nama kamu?",
-      jawaban: [
-        {
-          id: "1",
-          value: "Asep",
-        },
-        {
-          id: "2",
-          value: "Ijat",
-        },
-        {
-          id: "3",
-          value: "Kuroku",
-        },
-        {
-          id: "4",
-          value: "Anas",
-        },
-      ],
-    },
-    {
-      id: "3",
-      pertanyaan: "Apa kamu itu?",
-      jawaban: [
-        {
-          id: "1",
-          value: "Hantu",
-        },
-        {
-          id: "2",
-          value: "Manusia",
-        },
-        {
-          id: "3",
-          value: "Hewan",
-        },
-        {
-          id: "4",
-          value: "Tanaman",
-        },
-      ],
-    },
-    {
-      id: "4",
-      pertanyaan: "Ibukota dari negara Thailand?",
-      jawaban: [
-        {
-          id: "1",
-          value: "Bangkok",
-        },
-        {
-          id: "2",
-          value: "Manila",
-        },
-        {
-          id: "3",
-          value: "Kuala Lumpur",
-        },
-        {
-          id: "4",
-          value: "Berlin",
-        },
-      ],
-    },
-    {
-      id: "5",
-      pertanyaan: "Warna yang paling menyerap panas adalah",
-      jawaban: [
-        {
-          id: "1",
-          value: "Merah",
-        },
-        {
-          id: "2",
-          value: "Hitam",
-        },
-        {
-          id: "3",
-          value: "Putih",
-        },
-        {
-          id: "4",
-          value: "Kuning",
+          correct: false,
         },
       ],
     },

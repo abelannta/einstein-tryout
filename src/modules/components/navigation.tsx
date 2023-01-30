@@ -21,14 +21,18 @@ export const Navigation = (props: Navigation) => {
         <button
           disabled={currentPage === 0 ? true : false}
           onClick={handlePrev}
-          className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl"
+          className={`btn p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl ${
+            currentPage === 0 ? "text-gray-600 bg-gray-300" : ""
+          }`}
         >
           Previous
         </button>
         <button
           disabled={currentPage === length - 1 ? true : false}
           onClick={handleNext}
-          className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl"
+          className={`btn p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl ${
+            currentPage === length - 1 ? "text-gray-600 bg-gray-300" : ""
+          }`}
         >
           Next
         </button>
