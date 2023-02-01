@@ -4,6 +4,7 @@ import { ListNomor } from "../components/listNomor";
 import { Navigation } from "../components/navigation";
 import { Pertanyaan } from "../components/pertanyaan";
 import { soalDummy } from "@/lib/tryout/soal";
+import Link from "next/link";
 
 export interface JawabanStateProps {
   soalId: string;
@@ -112,9 +113,14 @@ export const BankSoal = () => {
             <label htmlFor="my-modal-6" className="btn bg-background text-bold">
               Cancel
             </label>
-            <label htmlFor="my-modal-6" className="btn bg-background text-bold">
-              Submit
-            </label>
+            <Link href="/bank-soal/review">
+              <label
+                htmlFor="my-modal-6"
+                className="btn bg-background text-bold"
+              >
+                Submit
+              </label>
+            </Link>
           </div>
         </div>
       </div>

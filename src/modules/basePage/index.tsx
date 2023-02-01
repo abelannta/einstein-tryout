@@ -1,12 +1,19 @@
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
 
-export const Basepage = ({ children }: any) => {
+interface BasepageProps {
+  children: React.ReactNode;
+  footer?: boolean;
+}
+
+export const Basepage = (props: BasepageProps) => {
+  const { children, footer } = props;
+
   return (
     <>
       <Navbar />
       <div className=" text-black">{children}</div>
-      <Footer />
+      {footer && <Footer />}
     </>
   );
 };

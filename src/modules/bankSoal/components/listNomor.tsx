@@ -22,7 +22,7 @@ export const ListNomor = (props: listNomorProps) => {
           key={i}
           className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl ${
             i === currentPage ? `border-background font-bold` : ""
-          } ${review[i]?.isCorrect === true ? "bg-green-600" : "bg-red-600"}`}
+          } ${review[i]?.isCorrect === true ? "bg-emerald-600" : "bg-red-600"}`}
           onClick={() => handleNumberClick(i)}
         >
           {i + 1}
