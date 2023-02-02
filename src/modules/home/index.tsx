@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#003566] rounded-full w-3/4 aspect-square absolute -z-10 -top-1/4 -left-1/4"></div>
-      <Basepage>
+      <Basepage footer={true}>
         <Welcome />
         <Feature />
         <Check />

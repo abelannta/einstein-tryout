@@ -11,7 +11,7 @@ export const BankSoalReview = () => {
 
   return (
     <Basepage>
-      <div className="bg-white text-blank">
+      <div className="bg-white text-black">
         <div className="py-44 container mx-auto">
           <div className="text-2xl font-bold mb-5">
             <h3>

@@ -14,7 +14,7 @@ export const Welcome = () => {
           Jika mimpimu adalah memasuki uninversitas top di Indonesia, belajar
           disini merupakan suatu kewajiban. Ayo belajar bersama disini!
         </div>
-        <button className="btn btn-black rounded-md text-bold w-[178px] py-2 mt-5">
+        <button className="btn bg-background rounded-md text-bold w-[178px] py-2 mt-5">
           Get Started
         </button>
       </div>

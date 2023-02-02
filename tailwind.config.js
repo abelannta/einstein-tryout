@@ -26,7 +26,15 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: ["light"],
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+          primary: "#003566",
+          secondary: "#FFD60A",
+        },
+      },
+    ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };

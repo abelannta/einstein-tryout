@@ -1,6 +1,7 @@
 import Image from "next/legacy/image";
 import homeCard1 from "@/public/assets/home3.png";
 import homeCard2 from "@/public/assets/home2.png";
+import Link from "next/link";
 
 export const Feature = () => {
   return (
@@ -55,9 +56,11 @@ export const Feature = () => {
               Jika kalian tertarik dengan bank soal kami, maka berlanggananlah
               dan mulai mengerjakan soal untuk kampus impianmu
             </div>
-            <button className="btn btn-black rounded-md text-bold w-[178px] py-2 mt-5">
-              Read more
-            </button>
+            <Link href="/bank-soal">
+              <button className="btn bg-background rounded-md text-bold w-[178px] py-2 mt-5">
+                Read more
+              </button>
+            </Link>
           </div>
         </div>
       </div>
