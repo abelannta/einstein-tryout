@@ -100,8 +100,8 @@ export const Materi = () => {
               <button
                 disabled={currentPage === 1 ? true : false}
                 onClick={handlePrev}
-                className={`btn bg-background text-bold ${
-                  currentPage === 1 ? "bg-gray-500 text-gray-700" : ""
+                className={`btn bg-background text-bold font-bold rounded-xl ${
+                  currentPage === 1 ? "text-gray-600 bg-gray-300" : ""
                 }`}
               >
                 {currentPage === 0 ? "Download" : "Previous"}
@@ -116,9 +116,9 @@ export const Materi = () => {
                   disabled={
                     currentPage === FetchMateri.materi.length ? true : false
                   }
-                  className={`btn bg-background text-bold ${
+                  className={`btn bg-background text-bold font-bold rounded-xl ${
                     currentPage === FetchMateri.materi.length
-                      ? "bg-gray-500 text-gray-700"
+                      ? "text-gray-600 bg-gray-300"
                       : ""
                   }`}
                   onClick={handleNext}

@@ -26,19 +26,23 @@ export const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Home</a>
+              <Link href="/">Home</Link>
             </li>
+
             <li>
-              <a>Bank Soal</a>
+              <Link href="/bank-soal">Bank Soal</Link>
             </li>
+
             <li>
-              <a>Tryout</a>
+              <Link href="/tryout">Tryout</Link>
             </li>
+
             <li>
-              <a>Paket</a>
+              <Link href="#paket">Paket</Link>
             </li>
+
             <li>
-              <a>Materi</a>
+              <Link href="/materi">Materi</Link>
             </li>
           </ul>
         </div>
@@ -47,19 +51,22 @@ export const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a>Bank Soal</a>
+            <Link href="/bank-soal">Bank Soal</Link>
           </li>
+
           <li>
-            <a>Tryout</a>
+            <Link href="/tryout">Tryout</Link>
           </li>
+
           <li>
-            <a>Paket</a>
+            <Link href="#paket">Paket</Link>
           </li>
+
           <li>
-            <a>Materi</a>
+            <Link href="/materi">Materi</Link>
           </li>
         </ul>
       </div>
