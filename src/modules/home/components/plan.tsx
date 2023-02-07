@@ -12,7 +12,7 @@ export const Plan = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-10">
-        <div className="bg-background rounded-xl p-10">
+        <div className="bg-primary rounded-xl p-10">
           <div className="flex flex-col justify-between items-center">
             <div className="text-2xl font-bold">Starter</div>
             <div className="text-5xl font-extrabold text-bold py-16">Free</div>
@@ -22,7 +22,7 @@ export const Plan = () => {
             </div>
           </div>
         </div>
-        <div className="bg-background rounded-xl p-10">
+        <div className="bg-primary rounded-xl p-10">
           <div className="flex flex-col justify-between items-center">
             <div className="text-2xl font-bold">Basic</div>
             <div className="text-5xl font-extrabold text-bold py-16">
@@ -33,7 +33,7 @@ export const Plan = () => {
             </div>
           </div>
         </div>
-        <div className="bg-background rounded-xl p-10">
+        <div className="bg-primary rounded-xl p-10">
           <div className="flex flex-col justify-between items-center">
             <div className="text-2xl font-bold">Pro</div>
             <div className="text-5xl font-extrabold text-bold py-16">

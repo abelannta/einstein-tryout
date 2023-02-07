@@ -70,9 +70,14 @@ export const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
+        <Link href="/auth/register">
+          <div className="btn rounded-xl bg-transparent text-black border-0 hover:text-bold">
+            Sign Up
+          </div>
+        </Link>
         <Link href="/auth/login">
-          <div className="btn text-bold">Sign in</div>
+          <div className="btn rounded-xl bg-background text-bold">Sign in</div>
         </Link>
       </div>
     </div>

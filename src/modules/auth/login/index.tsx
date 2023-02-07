@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import books from "@/public/assets/books.png";
+import login from "@/public/assets/login.png";
+import Link from "next/link";
 
 const LoginPage = (props: any) => {
   const { text } = props;
@@ -11,26 +12,26 @@ const LoginPage = (props: any) => {
   };
 
   return (
-    <div className="bg-sky-500">
+    <div className="bg-background">
       <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="bg-white w-4/6 rounded-xl h-fit text-black">
+        <div className="flex justify-center items-center h-fit py-20 md:h-screen md:py-0">
+          <div className="bg-white md:w-4/6 rounded-xl h-fit text-black">
             <div className="grid grid-cols-3 gap-4 shadow-lg">
-              <div className="col-span-1 bg-primary shadow-xl text-center rounded-xl p-10 py-16 text-white flex items-center flex-col justify-center">
-                <h1 className="font-bold text-2xl mb-5">
+              <div className="hidden md:grid md:col-span-1 bg-primary shadow-xl text-center rounded-xl p-10 py-16 text-white items-center flex-col justify-center">
+                <h1 className="font-bold text-2xl mb-5 text-bold">
                   EINSTEIN SMART TRYOUT
                 </h1>
-                <Image src={books} alt="Books" />
+                <Image src={login} alt="Books" />
                 <p className="text-white mt-10">
                   Aplikasi pintar untuk peminat tryout soal-soal ujian masuk
                   perguruan tinggi populer di Indonesia dengan fitur yang
                   aplikatif dan adaptif.
                 </p>
               </div>
-              <div className="col-span-2">
-                <div className="p-10 py-16">
-                  <h1 className="font-bold text-2xl text-primary mb-24">
-                    LOGIN
+              <div className="col-span-3 md:col-span-2">
+                <div className="p-5 py-10 md:p-10 md:py-16">
+                  <h1 className="font-bold text-3xl text-primary mb-10">
+                    Login
                   </h1>
                   <form
                     onSubmit={(e) => HandleSubmit(e)}
@@ -75,7 +76,9 @@ const LoginPage = (props: any) => {
                   </form>
                   <p className="text-center">
                     Don&apos;t have an account yet? Make a new account{" "}
-                    <a className="link">here</a>
+                    <Link href="/auth/register" className="link">
+                      here
+                    </Link>
                   </p>
                 </div>
               </div>
