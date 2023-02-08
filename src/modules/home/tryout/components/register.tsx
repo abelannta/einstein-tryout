@@ -4,7 +4,7 @@ import Image from "next/legacy/image";
 export const RegisterTryoutHome = () => {
   return (
     <div className="py-44 relative container">
-      <div className="bg-[#003566] -z-10 rounded-full w-3/4 aspect-square absolute -top-1/4 -left-1/4"></div>
+      <div className="bg-primary -z-10 rounded-full w-3/4 aspect-square absolute -top-1/4 -left-1/4"></div>
       <div className="grid grid-cols-2 gap-20">
         <div className="flex flex-col gap-5 justify-center max-w-lg">
           <h1 className="leading-snug text-4xl font-bold">

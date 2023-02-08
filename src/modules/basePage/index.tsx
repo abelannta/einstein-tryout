@@ -12,7 +12,7 @@ export const Basepage = (props: BasepageProps) => {
   return (
     <>
       <Navbar />
-      <div className=" text-white">{children}</div>
+      <div className=" text-white scrollbar-hidden">{children}</div>
       {footer && <Footer />}
     </>
   );

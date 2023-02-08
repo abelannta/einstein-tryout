@@ -8,7 +8,6 @@ import { Welcome } from "./components/welcome";
 const Home = () => {
   return (
     <>
-      <div className="bg-primary rounded-full w-3/4 aspect-square absolute -z-10 -top-1/4 -left-1/4"></div>
       <Basepage footer={true}>
         <Welcome />
         <Feature />

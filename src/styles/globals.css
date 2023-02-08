@@ -5,3 +5,8 @@
 :root {
     background-color: #001D3D   ;
 }
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
