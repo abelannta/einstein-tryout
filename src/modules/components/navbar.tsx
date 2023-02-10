@@ -46,7 +46,10 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">EINSTEIN</a>
+        <a className="btn btn-ghost normal-case text-xl">
+          Nine
+          <span className="text-bold">Intelligence</span>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -72,7 +75,7 @@ export const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         <Link href="/auth/register">
-          <div className="btn rounded-xl bg-transparent text-black border-0 hover:text-bold">
+          <div className="hidden md:flex btn rounded-xl bg-transparent text-black border-0 hover:text-bold">
             Sign Up
           </div>
         </Link>
