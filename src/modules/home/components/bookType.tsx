@@ -2,7 +2,7 @@ export const BookType = () => {
   return (
     <div className="bg-bold text-white">
       <div className="container mx-auto py-24">
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="bg-background rounded-xl p-10 text-center">
             <div className="text-2xl font-bold mb-10">Fisik</div>
             <div className="text-xl">

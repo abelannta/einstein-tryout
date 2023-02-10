@@ -2,7 +2,7 @@ export const Plan = () => {
   return (
     <div className="container mx-auto py-44 text-white">
       <div className="flex flex-col items-center text-bold mb-20">
-        <div className="text-4xl font-bold mb-8">
+        <div className="text-4xl font-bold mb-8 text-center">
           Paket Simple, Hasil Maksimal
         </div>
         <div className="text-xl max-w-xl text-center">
@@ -11,7 +11,7 @@ export const Plan = () => {
           belajar.
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div className="bg-primary rounded-xl p-10">
           <div className="flex flex-col justify-between items-center">
             <div className="text-2xl font-bold">Starter</div>
