@@ -6,7 +6,7 @@ import Link from "next/link";
 export const Feature = () => {
   return (
     <div className="container mx-auto py-44 text-black">
-      <div className="bg-bold rounded-xl w-full px-16">
+      <div className="bg-bold rounded-xl w-full px-8 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div className="order-2 md:order-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -22,7 +22,7 @@ export const Feature = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col justify-center border-l-2 md:border-0 relative p-10 md:p-0">
+              <div className="flex flex-col justify-center border-l-2 md:border-0 relative p-10 pr-0 md:p-0">
                 <div className="absolute block md:hidden rounded-full bg-black text-bold font-bold text-2xl w-10 h-10 top-8 -left-5">
                   <div className="flex h-full items-center justify-center">
                     1
@@ -36,7 +36,7 @@ export const Feature = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div className="relative flex flex-col justify-center border-l-2 p-10 py-20">
+              <div className="relative flex flex-col justify-center border-l-2 p-10 py-20 pr-0">
                 <div className="absolute rounded-full bg-black text-bold font-bold text-2xl w-10 h-10 top-8 -left-5">
                   <div className="flex h-full items-center justify-center">
                     2

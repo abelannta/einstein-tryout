@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Aplikasi pintar untuk peminat tryout soal-soal ujian masuk perguruan tinggi populer di Indonesia dengan fitur yang aplikatif dan adaptif."
         />
-        <title>Einstein Tryout</title>
+        <title>NineIntelegence</title>
       </Head>
       <NextProgress delay={300} options={{ showSpinner: false }} />
       <Component {...pageProps} />

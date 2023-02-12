@@ -18,8 +18,9 @@ const RegisterPage = (props: any) => {
           <div className="bg-white md:w-4/6 rounded-xl h-fit text-black">
             <div className="grid grid-cols-3 gap-4 shadow-lg">
               <div className="hidden md:grid md:col-span-1 bg-primary shadow-xl text-center rounded-xl p-10 py-16 text-white items-center flex-col justify-center">
-                <h1 className="font-bold text-2xl mb-5 text-bold">
-                  EINSTEIN SMART TRYOUT
+                <h1 className="font-bold text-2xl mb-5 text-white">
+                  Nine
+                  <span className="text-bold">Intelligence</span>
                 </h1>
                 <Image src={register} alt="Books" />
                 <p className="text-white mt-10">
