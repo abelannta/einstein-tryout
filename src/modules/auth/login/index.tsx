@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import login from "@/public/assets/login.png";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { setCookie } from "nookies";
 
 const LoginPage = (props: any) => {
   const { text } = props;
+  const router = useRouter();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
 
   const HandleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("submited");
+    if (
+      loginData.email === "user@gmail.com" &&
+      loginData.password === "123456"
+    ) {
+      setCookie(null, "accessToken", "123456", {
+        maxAge: 3600,
+        path: "/",
+      });
+      toast.success("Login Berhasil");
+      router.replace("/profil");
+    } else {
+      toast.error("Email atau password tidak sesuai");
+    }
   };
 
   return (
@@ -44,6 +64,13 @@ const LoginPage = (props: any) => {
                       </label>
                       <input
                         type="text"
+                        id="email"
+                        onChange={(e) =>
+                          setLoginData((prev) => ({
+                            ...prev,
+                            email: e.target.value,
+                          }))
+                        }
                         placeholder="Email or Phone Number"
                         className="input input-bordered input-primary w-full"
                       />
@@ -54,6 +81,13 @@ const LoginPage = (props: any) => {
                       </label>
                       <input
                         type="password"
+                        id="password"
+                        onChange={(e) =>
+                          setLoginData((prev) => ({
+                            ...prev,
+                            password: e.target.value,
+                          }))
+                        }
                         placeholder="Password"
                         className="input input-bordered input-primary w-full"
                       />

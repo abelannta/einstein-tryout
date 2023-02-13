@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import NextProgress from "next-progress";
+import { Toaster } from "react-hot-toast";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>NineIntelegence</title>
       </Head>
       <NextProgress delay={300} options={{ showSpinner: false }} />
+      <Toaster />
       <Component {...pageProps} />
     </>
   );

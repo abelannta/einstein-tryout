@@ -1,11 +1,18 @@
 import LoginPage from "@/modules/auth/login";
+import nookies from "nookies";
 
 export const getServerSideProps = async (ctx: any) => {
-  const text = "Hai";
+  const cookies = nookies.get(ctx);
+
+  if (!cookies.accessToken) {
+    return {
+      props: {},
+    };
+  }
 
   return {
-    props: {
-      text: text,
+    redirect: {
+      destination: "/",
     },
   };
 };
