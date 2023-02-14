@@ -1,9 +1,17 @@
 import Link from "next/link";
 import Image from "next/legacy/image";
-import { parseCookies } from "nookies";
+import { parseCookies, destroyCookie } from "nookies";
+import { useRouter } from "next/router";
+import fotoProfil from "@/public/assets/pepe.webp";
 
 export const Navbar = () => {
   const cookies = parseCookies();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    destroyCookie(null, "accessToken");
+    router.push("/auth/login");
+  };
 
   return (
     <div className="navbar fixed bg-base-100 z-50">
@@ -32,28 +40,24 @@ export const Navbar = () => {
             <li>
               <Link href="/">Home</Link>
             </li>
-
             <li>
               <Link href="/bank-soal">Bank Soal</Link>
             </li>
-
             <li>
               <Link href="/tryout">Tryout</Link>
             </li>
-
             <li>
               <Link href="#paket">Paket</Link>
             </li>
-
             <li>
               <Link href="/materi">Materi</Link>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">
+        <p className="btn btn-ghost normal-case text-xl">
           Nine
           <span className="text-bold">Intelligence</span>
-        </a>
+        </p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -63,76 +67,67 @@ export const Navbar = () => {
           <li>
             <Link href="/bank-soal">Bank Soal</Link>
           </li>
-
           <li>
             <Link href="/tryout">Tryout</Link>
           </li>
-
           <li>
-            <Link href="#paket">Paket</Link>
+            <Link href="/paket">Paket</Link>
           </li>
-
           <li>
             <Link href="/materi">Materi</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        {cookies.accessToken ? (
+        {/* {cookies.accessToken ? (
           <>
             <div className="dropdown dropdown-end">
-              <label
+              <div
                 tabIndex={0}
                 className="flex items-center cursor-pointer btn btn-ghost capitalize"
               >
                 <p className="text-base text-black">Abel Ananta</p>
-                <div className="rounded-full w-10 h-10 bg-gray-400 ml-3"></div>
-              </label>
+                <div className="rounded-full w-10 h-10 ml-3 overflow-hidden">
+                  <Image src={fotoProfil} />
+                </div>
+              </div>
               <ul
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <h3 className="font-bold text-lg py-3 px-2">Ruang Siswa</h3>
-                <Link legacyBehavior href="/profil">
-                  <li>
-                    <a>Profil</a>
-                  </li>
-                </Link>
-                <Link legacyBehavior href="/profil?tabs=kegiatan">
-                  <li>
-                    <a>Kegiatanku</a>
-                  </li>
-                </Link>
-                <Link legacyBehavior href="/profil?tabs=riwayat">
-                  <li>
-                    <a>Riwayat</a>
-                  </li>
-                </Link>
-                <Link legacyBehavior href="/profil?tabs=progres">
-                  <li>
-                    <a>Progres</a>
-                  </li>
-                </Link>
+                <li className="font-bold text-lg py-3 px-2">Ruang Siswa</li>
                 <li>
-                  <a>Logout</a>
+                  <Link href="/profil">Profil</Link>
                 </li>
+                <li>
+                  <Link href="/profil?tabs=kegiatan">Kegiatanku</Link>
+                </li>
+                <li>
+                  <Link href="/profil?tabs=riwayat">Riwayat</Link>
+                </li>
+                <li>
+                  <Link href="/profil?tabs=progres">Progres</Link>
+                </li>
+                <div className="btn btn-ghost" onClick={handleLogout}>
+                  <a>Logout</a>
+                </div>
               </ul>
             </div>
           </>
         ) : (
           <>
             <Link href="/auth/register">
-              <div className="hidden md:flex btn rounded-xl bg-transparent text-black border-0 hover:text-bold">
+              <button className="hidden md:flex btn rounded-xl bg-transparent text-black border-0 hover:text-bold">
                 Sign Up
-              </div>
+              </button>
             </Link>
             <Link href="/auth/login">
-              <div className="btn rounded-xl bg-background text-bold">
+              <button className="btn rounded-xl bg-background text-bold">
                 Sign in
-              </div>
+              </button>
             </Link>
           </>
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -8,11 +8,13 @@ import { Kegiatanku } from "./components/kegiatanku";
 import { Riwayat } from "./components/riwayat";
 import fotoProfil from "@/public/assets/pepe.webp";
 import Image from "next/legacy/image";
+import { Progres } from "./components/progres";
 
 enum TabsStatus {
   Overview = "",
   Kegiatan = "kegiatan",
   Riwayat = "riwayat",
+  Progres = "progres",
 }
 
 export const Profile = () => {
@@ -27,6 +29,8 @@ export const Profile = () => {
         setTabs(TabsStatus.Riwayat);
       } else if (router.query?.tabs === TabsStatus.Overview) {
         setTabs(TabsStatus.Overview);
+      } else if (router.query?.tabs === TabsStatus.Progres) {
+        setTabs(TabsStatus.Progres);
       }
     }
   }, [router.isReady, router.query]);
@@ -90,6 +94,14 @@ export const Profile = () => {
                   >
                     Riwayat
                   </Link>
+                  <Link
+                    href={{ query: { tabs: "progres" } }}
+                    className={`tab tab-lg tab-lifted ${
+                      tabs === TabsStatus.Progres ? "tab-active" : ""
+                    }`}
+                  >
+                    Progres
+                  </Link>
                 </div>
                 {tabs === TabsStatus.Overview ? (
                   <OverviewProfile />
@@ -97,6 +109,8 @@ export const Profile = () => {
                   <Kegiatanku />
                 ) : tabs === TabsStatus.Riwayat ? (
                   <Riwayat />
+                ) : tabs === TabsStatus.Progres ? (
+                  <Progres />
                 ) : (
                   <OverviewProfile />
                 )}
