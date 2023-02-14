@@ -32,6 +32,8 @@ export const Profile = () => {
       } else if (router.query?.tabs === TabsStatus.Progres) {
         setTabs(TabsStatus.Progres);
       }
+    } else {
+      setTabs(TabsStatus.Overview);
     }
   }, [router.isReady, router.query]);
 
