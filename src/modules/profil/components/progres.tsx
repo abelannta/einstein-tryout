@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Progres = () => {
   return (
     <>
@@ -18,9 +20,11 @@ export const Progres = () => {
               value={75}
               max="100"
             ></progress>
-            <button className="p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
-              Lanjutkan
-            </button>
+            <Link href="/materi/bakteri-dan-virus">
+              <button className="p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
+                Lanjutkan
+              </button>
+            </Link>
           </div>
         </div>
       </div>
