@@ -20,7 +20,7 @@ export const Progres = () => {
               value={75}
               max="100"
             ></progress>
-            <Link href="/materi/bakteri-dan-virus">
+            <Link href="/materi/biologi/bakteri-dan-virus">
               <button className="p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
                 Lanjutkan
               </button>

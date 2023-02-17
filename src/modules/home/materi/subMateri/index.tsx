@@ -4,37 +4,30 @@ import Link from "next/link";
 const ListMateriContent = [
   {
     id: 1,
-    title: "Biologi",
+    title: "Bakteri dan Virus",
   },
   {
     id: 2,
-    title: "Kimia",
+    title: "Sel",
   },
   {
     id: 3,
-    title: "Bahasa Inggris",
-  },
-  {
-    id: 4,
-    title: "Fisika",
-  },
-  {
-    id: 5,
-    title: "Matematika",
+    title: "Sel Reproduksi",
   },
 ];
 
-export const MateriLandingPage = () => {
+export const SubMateriLandingPage = () => {
   return (
     <>
       <Basepage footer={true}>
         <div className="py-44 container">
           <div className="mb-16">
-            <h2 className="text-4xl font-bold mb-5">Materi</h2>
+            <h2 className="text-4xl font-bold mb-5">Biologi</h2>
             <p className="text-lg">
-              Terdapat banyak materi yang telah dikelompokkan sesuai mata
-              pelajaran yang ada di Sekolah Menengah Atas. Kalian dapat memilih
-              untuk mempelajari materi apa saja yang kalian inginkan.
+              Terdapat banyak materi yang telah dikelompokkan sesuai mata Materi
+              biologi disini bisa terbilang cukup lengkap. Kalian dapat membeli
+              materi ini secara langsung ataupun dapat melalui media digital
+              dengan cara berlangganan.
             </p>
           </div>
           <div className="flex flex-col gap-5">
@@ -60,7 +53,7 @@ const ListMateri = (props: { title: string; id: number }) => {
             <div className="text-xl font-bold text-black">{props.title}</div>
           </div>
         </div>
-        <Link href="materi/biologi">
+        <Link href="/materi/biologi/bakteri-dan-virus">
           <button className="btn p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
             Detail
           </button>
