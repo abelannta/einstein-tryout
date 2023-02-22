@@ -1,4 +1,9 @@
 import { BsFillBarChartFill, BsFillCheckCircleFill } from "react-icons/bs";
+import dynamic from "next/dynamic";
+
+const LineChart = dynamic(() => import("@/modules/components/lineChart"), {
+  ssr: false,
+});
 
 export const OverviewProfile = () => {
   return (
@@ -12,6 +17,9 @@ export const OverviewProfile = () => {
         <div className="">1 Tryout yang sudah diselesaikan</div>
       </div>
       <h2 className="text-3xl mt-10 font-bold">Statistik</h2>
+      <div className="pt-5">
+        <LineChart />
+      </div>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import UserNavbar from "@/modules/components/userNavbar";
 
 const UserNav = dynamic(() => import("@/modules/components/userNavbar"), {
   ssr: false,

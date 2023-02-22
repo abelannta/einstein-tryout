@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Kegiatanku = () => {
   return (
     <div className="flex flex-col gap-5">
@@ -12,9 +14,11 @@ export const Kegiatanku = () => {
               <div className="text-gray-600">Senin, 1 Januari 1999</div>
             </div>
           </div>
-          <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
-            Mulai
-          </button>
+          <Link href="/tryout/1">
+            <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
+              Mulai
+            </button>
+          </Link>
         </div>
       </div>
       <div className="bg-bold rounded-xl p-5">
@@ -28,9 +32,11 @@ export const Kegiatanku = () => {
               <div className="text-gray-600">Senin, 2 Januari 1999</div>
             </div>
           </div>
-          <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
-            Mulai
-          </button>
+          <Link href="/tryout/2">
+            <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
+              Mulai
+            </button>
+          </Link>
         </div>
       </div>
     </div>

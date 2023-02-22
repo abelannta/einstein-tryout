@@ -15,14 +15,17 @@
     "daisyui": "^2.42.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
+    "moment": "^2.29.4",
     "next": "13.0.5",
     "next-progress": "^2.2.0",
     "nookies": "^2.5.2",
     "react": "18.2.0",
+    "react-charts": "^3.0.0-beta.54",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
+    "react-resizable": "^3.0.4",
     "typescript": "4.9.3"
   },
   "devDependencies": {
