@@ -9,6 +9,7 @@ import { Riwayat } from "./components/riwayat";
 import fotoProfil from "@/public/assets/pepe.webp";
 import Image from "next/legacy/image";
 import { Progres } from "./components/progres";
+import { EditModal } from "./components/editModal";
 
 enum TabsStatus {
   Overview = "",
@@ -65,9 +66,12 @@ export const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <button className="bg-background rounded-xl text-bold w-full p-3 mt-7">
-                  Edit profil
-                </button>
+                <label
+                  htmlFor="edit-modal"
+                  className="btn w-full mt-10 bg-background text-bold"
+                >
+                  Edit Profil
+                </label>
               </div>
               <div className="col-span-3">
                 <div className="tabs mb-10">
@@ -121,6 +125,7 @@ export const Profile = () => {
           </div>
         </div>
       </Basepage>
+      <EditModal />
     </>
   );
 };
