@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo } from "react";
+import moment from "moment";
+import React, { useMemo } from "react";
 import { AxisOptions, Chart } from "react-charts";
 
 export default function LineChart() {
@@ -57,7 +58,8 @@ export default function LineChart() {
     AxisOptions<typeof data[number]["data"][number]>
   >(
     () => ({
-      getValue: (datum) => datum.date as unknown as Date,
+      getValue: (datum) =>
+        moment(datum.date).format("DD MMMM YYYY") as unknown as Date,
     }),
     []
   );
@@ -73,10 +75,6 @@ export default function LineChart() {
     ],
     []
   );
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <>

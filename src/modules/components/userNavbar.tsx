@@ -21,8 +21,10 @@ const UserNavbar = () => {
             tabIndex={0}
             className="flex items-center cursor-pointer btn btn-ghost capitalize"
           >
-            <p className="text-base text-black">Abel Ananta</p>
-            <div className="rounded-full w-10 h-10 ml-3 overflow-hidden">
+            <div className="hidden md:block">
+              <p className="text-base text-black">Abel Ananta</p>
+            </div>
+            <div className="rounded-full w-10 h-10 m-0 md:ml-3 overflow-hidden">
               <Image src={fotoProfil} />
             </div>
           </div>

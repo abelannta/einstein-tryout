@@ -42,14 +42,16 @@ export const Profile = () => {
     <>
       <Basepage>
         <div className="bg-white text-black">
-          <div className="py-44 container mx-auto">
-            <div className="text-4xl font-bold">Profil</div>
-            <div className="grid grid-cols-4 gap-20 mt-20">
-              <div className="col-span-1">
-                <div className="rounded-full w-full aspect-square mb-10 overflow-hidden border border-gray-300">
-                  <Image src={fotoProfil} alt="Foto Profil" />
+          <div className="py-24 md:py-44 container mx-auto">
+            <div className="text-2xl md:text-4xl font-bold">Profil</div>
+            <div className="grid grid-cols-4 gap-20 mt-10 md:mt-20">
+              <div className="col-span-4 md:col-span-1">
+                <div className="flex justify-center items-center">
+                  <div className="rounded-full w-[200px] md:w-full aspect-square mb-10 overflow-hidden border border-gray-300">
+                    <Image src={fotoProfil} alt="Foto Profil" />
+                  </div>
                 </div>
-                <div className="text-2xl font-bold">Abel Ananta</div>
+                <div className="text-lg md:text-2xl font-bold">Abel Ananta</div>
                 <div className="mt-7">
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center">
@@ -73,12 +75,12 @@ export const Profile = () => {
                   Edit Profil
                 </label>
               </div>
-              <div className="col-span-3">
+              <div className="col-span-4 md:col-span-3">
                 <div className="tabs mb-10">
                   <Link
                     href="/profil"
                     onClick={() => setTabs(TabsStatus.Overview)}
-                    className={`tab tab-lg tab-lifted ${
+                    className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Overview ? "tab-active" : ""
                     }`}
                   >
@@ -86,7 +88,7 @@ export const Profile = () => {
                   </Link>
                   <Link
                     href={{ query: { tabs: "kegiatan" } }}
-                    className={`tab tab-lg tab-lifted ${
+                    className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Kegiatan ? "tab-active" : ""
                     }`}
                   >
@@ -94,7 +96,7 @@ export const Profile = () => {
                   </Link>
                   <Link
                     href={{ query: { tabs: "riwayat" } }}
-                    className={`tab tab-lg tab-lifted ${
+                    className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Riwayat ? "tab-active" : ""
                     }`}
                   >
@@ -102,7 +104,7 @@ export const Profile = () => {
                   </Link>
                   <Link
                     href={{ query: { tabs: "progres" } }}
-                    className={`tab tab-lg tab-lifted ${
+                    className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Progres ? "tab-active" : ""
                     }`}
                   >

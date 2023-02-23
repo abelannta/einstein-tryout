@@ -10,7 +10,9 @@ export const Progres = () => {
               1
             </div>
             <div className="flex flex-col">
-              <div className="text-xl font-bold">Tryout Biologi 1</div>
+              <div className="text-md md:text-xl font-bold">
+                Tryout Biologi 1
+              </div>
               <div className="text-gray-600">Bakteri dan Virus</div>
             </div>
           </div>
@@ -21,7 +23,7 @@ export const Progres = () => {
               max="100"
             ></progress>
             <Link href="/materi/biologi/bakteri-dan-virus">
-              <button className="p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
+              <button className="text-md md:text-lg p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
                 Lanjutkan
               </button>
             </Link>

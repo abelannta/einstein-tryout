@@ -10,12 +10,14 @@ export const Kegiatanku = () => {
               1
             </div>
             <div className="flex flex-col">
-              <div className="text-xl font-bold">Tryout Biologi 1</div>
+              <div className="text-md md:text-xl font-bold">
+                Tryout Biologi 1
+              </div>
               <div className="text-gray-600">Senin, 1 Januari 1999</div>
             </div>
           </div>
           <Link href="/tryout/1">
-            <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
+            <button className="text-sm md:text-lg p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
               Mulai
             </button>
           </Link>
@@ -28,12 +30,14 @@ export const Kegiatanku = () => {
               2
             </div>
             <div className="flex flex-col">
-              <div className="text-xl font-bold">Tryout Biologi 2</div>
+              <div className="text-md md:text-xl font-bold">
+                Tryout Biologi 2
+              </div>
               <div className="text-gray-600">Senin, 2 Januari 1999</div>
             </div>
           </div>
           <Link href="/tryout/2">
-            <button className="p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
+            <button className="text-sm md:text-lg p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
               Mulai
             </button>
           </Link>
