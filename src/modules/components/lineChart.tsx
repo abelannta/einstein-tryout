@@ -78,7 +78,7 @@ export default function LineChart() {
 
   return (
     <>
-      <div className="w-full aspect-video">
+      <div className="w-full aspect-square md:aspect-video">
         <Chart
           options={{
             data,

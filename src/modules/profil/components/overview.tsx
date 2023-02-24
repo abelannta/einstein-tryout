@@ -16,7 +16,7 @@ export const OverviewProfile = () => {
         <BsFillCheckCircleFill className="mr-5" />
         <div className="">1 Tryout yang sudah diselesaikan</div>
       </div>
-      <h2 className="text-3xl mt-10 font-bold">Statistik</h2>
+      <h2 className="text-xl md:text-3xl mt-10 font-bold">Statistik</h2>
       <div className="pt-5">
         <LineChart />
       </div>

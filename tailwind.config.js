@@ -18,6 +18,7 @@ module.exports = {
         background: "#001D3D",
         primary: "#003566",
         bold: "#FFC300",
+        paper: "#FFF3B6",
       },
     },
     container: {

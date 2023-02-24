@@ -62,14 +62,24 @@ export const BankSoal = () => {
       <Basepage>
         <div className="bg-white text-black">
           <div className="py-44 container mx-auto">
-            <div className="flex justify-between items-center text-2xl font-bold mb-5">
+            <div className="flex justify-between items-center text-lg md:text-2xl font-bold mb-5">
               <h3>
                 Kuis ({currentPage + 1}/{soal.listData.length})
               </h3>
               <h3>90:00</h3>
+              <div className="block md:hidden">
+                <label
+                  htmlFor="list-number"
+                  className="flex flex-col gap-1 w-5 h-5"
+                >
+                  <div className="w-full rounded-xl bg-black h-1"></div>
+                  <div className="w-full rounded-xl bg-black h-1"></div>
+                  <div className="w-full rounded-xl bg-black h-1"></div>
+                </label>
+              </div>
             </div>
             <div className="grid grid-cols-6 gap-10">
-              <div className="col-span-4">
+              <div className="col-span-6 md:col-span-4">
                 <Pertanyaan
                   soal={soal.listData}
                   currentPage={currentPage}
@@ -83,7 +93,7 @@ export const BankSoal = () => {
                   />
                 </Pertanyaan>
               </div>
-              <div className="col-span-2">
+              <div className="hidden md:block md:col-span-2">
                 <ListNomor
                   length={soal.listData.length}
                   currentPage={currentPage}
@@ -91,7 +101,7 @@ export const BankSoal = () => {
                   jawaban={jawaban}
                 >
                   <label
-                    htmlFor="my-modal-6"
+                    htmlFor="submit"
                     className="btn w-full bg-background text-bold"
                     onClick={handleSubmit}
                   >
@@ -103,27 +113,45 @@ export const BankSoal = () => {
           </div>
         </div>
       </Basepage>
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+      <input type="checkbox" id="submit" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
             Apakah anda sudah yakin dengan semua jawaban?
           </h3>
           <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn bg-background text-bold">
+            <label htmlFor="submit" className="btn bg-background text-bold">
               Cancel
             </label>
             <Link href="/bank-soal/review">
-              <label
-                htmlFor="my-modal-6"
-                className="btn bg-background text-bold"
-              >
+              <label htmlFor="submit" className="btn bg-background text-bold">
                 Submit
               </label>
             </Link>
           </div>
         </div>
       </div>
+      <input type="checkbox" id="list-number" className="modal-toggle" />
+      <label
+        htmlFor="list-number"
+        className="modal modal-bottom sm:modal-middle"
+      >
+        <label className="modal-box relative">
+          <ListNomor
+            length={soal.listData.length}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            jawaban={jawaban}
+          >
+            <label
+              htmlFor="submit"
+              className="btn w-full bg-background text-bold"
+            >
+              Submit
+            </label>
+          </ListNomor>
+        </label>
+      </label>
     </>
   );
 };

@@ -78,6 +78,7 @@ export const Profile = () => {
               <div className="col-span-4 md:col-span-3">
                 <div className="tabs mb-10">
                   <Link
+                    scroll={false}
                     href="/profil"
                     onClick={() => setTabs(TabsStatus.Overview)}
                     className={`tab tab-sm md:tab-lg tab-lifted ${
@@ -87,6 +88,7 @@ export const Profile = () => {
                     Overview
                   </Link>
                   <Link
+                    scroll={false}
                     href={{ query: { tabs: "kegiatan" } }}
                     className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Kegiatan ? "tab-active" : ""
@@ -95,6 +97,7 @@ export const Profile = () => {
                     Kegiatanku
                   </Link>
                   <Link
+                    scroll={false}
                     href={{ query: { tabs: "riwayat" } }}
                     className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Riwayat ? "tab-active" : ""
@@ -103,6 +106,7 @@ export const Profile = () => {
                     Riwayat
                   </Link>
                   <Link
+                    scroll={false}
                     href={{ query: { tabs: "progres" } }}
                     className={`tab tab-sm md:tab-lg tab-lifted ${
                       tabs === TabsStatus.Progres ? "tab-active" : ""

@@ -19,15 +19,16 @@ export const ListNomor = (props: listNomorProps) => {
     let list = [];
     for (let i = 0; i < length; i++) {
       list.push(
-        <button
+        <label
           key={i}
+          htmlFor="list-number"
           className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl ${
-            i === currentPage ? `border-background font-bold` : ""
+            i === currentPage ? `border-primary font-bold` : ""
           } ${jawaban[i]?.jawabanId != "" ? "bg-background text-bold" : ""}`}
           onClick={() => handleNumberClick(i)}
         >
           {i + 1}
-        </button>
+        </label>
       );
     }
 
@@ -35,7 +36,7 @@ export const ListNomor = (props: listNomorProps) => {
   };
 
   return (
-    <div className="border border-gray-300 p-10 rounded-xl">
+    <div className="md:border md:border-gray-300 p-3 pt-10 md:p-10 rounded-xl">
       <h2 className="text-2xl font-bold mb-5">Daftar Soal</h2>
       <div className="grid grid-cols-5 gap-3 mb-10">{loopingNumber()}</div>
       {children}
