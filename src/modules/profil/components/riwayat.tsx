@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Riwayat = () => {
   return (
     <>
@@ -16,9 +18,11 @@ export const Riwayat = () => {
           </div>
           <div className="flex items-center">
             <div className="text-md md:text-lg font-bold mr-5">Nilai: 90</div>
-            <button className="text-md md:text-lg p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
-              Pembahasan
-            </button>
+            <Link href="/pembahasan">
+              <button className="text-md md:text-lg p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
+                Pembahasan
+              </button>
+            </Link>
           </div>
         </div>
       </div>
