@@ -1,6 +1,6 @@
 export const Plan = () => {
   return (
-    <div className="container mx-auto py-44 text-white">
+    <div className="container mx-auto py-44 text-white" id="paket">
       <div className="flex flex-col items-center text-bold mb-20">
         <div className="text-4xl font-bold mb-8 text-center">
           Paket Simple, Hasil Maksimal

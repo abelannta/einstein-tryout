@@ -64,7 +64,7 @@ export const Navbar = () => {
             <Link href="/tryout">Tryout</Link>
           </li>
           <li>
-            <Link href="/paket">Paket</Link>
+            <Link href="#paket">Paket</Link>
           </li>
           <li>
             <Link href="/materi">Materi</Link>
