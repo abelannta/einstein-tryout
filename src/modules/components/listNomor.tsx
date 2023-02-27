@@ -21,8 +21,7 @@ export const ListNomor = (props: listNomorProps) => {
       list.push(
         <label
           key={i}
-          htmlFor="list-number"
-          className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl ${
+          className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl cursor-pointer ${
             i === currentPage ? `border-primary font-bold` : ""
           } ${jawaban[i]?.jawabanId != "" ? "bg-background text-bold" : ""}`}
           onClick={() => handleNumberClick(i)}

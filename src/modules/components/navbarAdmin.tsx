@@ -8,14 +8,14 @@ const NavigationBarAdmin = () => {
       <nav className="z-50 relative bg-white px-5 py-3 w-full">
         <div className="z-50 flex flex-wrap justify-between w-full items-center">
           <Link href="/" legacyBehavior>
-            <button className="hover:translate-x-1 duration-300 flex items-center space-x-2 text-primary-500 ">
-              <span className="self-center text-xl font-semibold whitespace-nowrap">
+            <div className="hover:translate-x-1 duration-300 flex items-center space-x-2 text-primary-500 ">
+              <div className="self-center text-xl font-semibold whitespace-nowrap">
                 <p className="normal-case text-xl">
                   Nine
                   <span className="text-bold">Intelligence</span>
                 </p>
-              </span>
-            </button>
+              </div>
+            </div>
           </Link>
           <div className="flex z-50 items-center ">
             <UserNavbar />
