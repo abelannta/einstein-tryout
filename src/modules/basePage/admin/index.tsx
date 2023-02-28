@@ -1,10 +1,10 @@
 import { ReactNode, useState } from "react";
 import ListItemComponent from "@/modules/components/listItem";
 import NavigationBarAdmin from "@/modules/components/navbarAdmin";
+import { SIDEBAR_LINK } from "@/modules/components/menuAdmin";
 
 interface BasePageProps {
   children?: ReactNode;
-  menu: any;
   menuDropdown?: any;
   menuBottom?: any;
 }
@@ -26,7 +26,6 @@ export interface SideBarDataChild {
 
 const AdminBasePage = ({
   children,
-  menu,
   menuDropdown,
   menuBottom,
 }: BasePageProps) => {
@@ -41,7 +40,7 @@ const AdminBasePage = ({
         {/* sidebar */}
         <div className="fixed h-full w-[60px] lg:w-64 bg-white">
           <div className="pt-[92px] lg:pt-[92px]  lg:p-4 p-1">
-            <ListItemComponent listItems={menu} />
+            <ListItemComponent listItems={SIDEBAR_LINK} />
           </div>
         </div>
 
