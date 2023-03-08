@@ -3,6 +3,7 @@ import Head from "next/head";
 import NextProgress from "next-progress";
 import { Toaster } from "react-hot-toast";
 import "@/styles/globals.css";
+import { GlobalContextProvider } from "src/contexts/globalContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <NextProgress delay={300} options={{ showSpinner: false }} />
       <Toaster />
-      <Component {...pageProps} />
+      <GlobalContextProvider>
+        <Component {...pageProps} />
+      </GlobalContextProvider>
     </>
   );
 }

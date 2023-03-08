@@ -1,34 +1,48 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import login from "@/public/assets/login.png";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { setCookie } from "nookies";
+import { getProfile, getToken } from "@/lib/auth";
+import { useGlobalContext } from "src/contexts";
 
 const LoginPage = (props: any) => {
   const { text } = props;
   const router = useRouter();
+  const { setUser } = useGlobalContext();
   const [loginData, setLoginData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
-  const HandleSubmit = (e: any) => {
+  const HandleSubmit = (e: any, username: string, password: string) => {
     e.preventDefault();
-    if (
-      loginData.email === "user@gmail.com" &&
-      loginData.password === "123456"
-    ) {
-      setCookie(null, "accessToken", "123456", {
-        maxAge: 3600,
-        path: "/",
+    const loginPromise = getToken(username, password)
+      .then((res) => {
+        setCookie(null, "accessToken", res.token, {
+          maxAge: 3600,
+          path: "/",
+        });
+        const setUserProfile = async () => {
+          await getProfile(res.token)
+            .then((res) => {
+              setUser(res);
+              router.replace("/profil");
+            })
+            .catch((err) => console.error(err));
+        };
+        setUserProfile();
+      })
+      .catch((err) => {
+        throw err;
       });
-      toast.success("Login Berhasil");
-      router.replace("/profil");
-    } else {
-      toast.error("Email atau password tidak sesuai");
-    }
+    toast.promise(loginPromise, {
+      loading: "Loading...",
+      success: "Login berhasil!",
+      error: "Email atau Kata Sandi anda salah!",
+    });
   };
 
   return (
@@ -55,7 +69,9 @@ const LoginPage = (props: any) => {
                     Login
                   </h1>
                   <form
-                    onSubmit={(e) => HandleSubmit(e)}
+                    onSubmit={(e) =>
+                      HandleSubmit(e, loginData.username, loginData.password)
+                    }
                     className="text-primary"
                   >
                     <div className="flex flex-col">
@@ -68,7 +84,7 @@ const LoginPage = (props: any) => {
                         onChange={(e) =>
                           setLoginData((prev) => ({
                             ...prev,
-                            email: e.target.value,
+                            username: e.target.value,
                           }))
                         }
                         placeholder="Email or Phone Number"
