@@ -1,4 +1,4 @@
 export interface JawabanStateProps {
-  soalId: string;
-  jawabanId: string;
+  soal_id: string;
+  answer: string;
 }

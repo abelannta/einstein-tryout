@@ -98,7 +98,7 @@ export const PreludeTryout = () => {
                     <HiOutlineClipboardDocumentList className="w-6 h-6 text-bold" />
                     <h3 className="text-lg font-light">TO dimulai</h3>
                   </div>
-                  <h3 className="text-lg font-light text-bold">20 soal</h3>
+                  <h3 className="text-lg font-light text-bold">20 Soal</h3>
                 </div>
               </div>
             </div>
@@ -123,7 +123,9 @@ export const PreludeTryout = () => {
                           </li>
                           <div className="flex border-l border-slate-400 pl-5">
                             <HiOutlineClipboardDocumentList className="w-6 h-6 mr-3" />
-                            <h4 className="text-md font-light">0 Soal</h4>
+                            <h4 className="text-md font-light">
+                              {item.total} Soal
+                            </h4>
                           </div>
                         </div>
                       ))}

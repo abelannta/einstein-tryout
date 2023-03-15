@@ -1,5 +1,6 @@
 import RegisterTryout from "@/public/assets/registerTO.png";
 import Image from "next/legacy/image";
+import Link from "next/link";
 
 export const RegisterTryoutHome = () => {
   return (
@@ -15,9 +16,11 @@ export const RegisterTryoutHome = () => {
             Daftarkan dirimu di tryout yang kami sediakan. Kamu bebas memilih
             tryout sesuai dengan tanggal yang kamu inginkan.
           </p>
-          <button className="btn p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
-            Daftar
-          </button>
+          <Link href="/tryout/schedule">
+            <button className="btn p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
+              Daftar
+            </button>
+          </Link>
         </div>
         <div className="flex justify-center max-w-2xl">
           <Image src={RegisterTryout} />

@@ -1,3 +1,13 @@
-import { Tryout } from "@/modules/tryout";
+import { GetServerSidePropsContext } from "next";
 
-export default Tryout;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { tryoutId } = context.query;
+
+  // Pass data to the page via props
+  return {
+    redirect: {
+      destination: "/",
+      permanent: false,
+    },
+  };
+}

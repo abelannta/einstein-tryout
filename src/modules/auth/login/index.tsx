@@ -6,12 +6,10 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { setCookie } from "nookies";
 import { getProfile, getToken } from "@/lib/auth";
-import { useGlobalContext } from "src/contexts";
 
 const LoginPage = (props: any) => {
   const { text } = props;
   const router = useRouter();
-  const { setUser } = useGlobalContext();
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
@@ -28,7 +26,11 @@ const LoginPage = (props: any) => {
         const setUserProfile = async () => {
           await getProfile(res.token)
             .then((res) => {
-              setUser(res);
+              setCookie(null, "userData", JSON.stringify(res), {
+                maxAge: 3600,
+                path: "/",
+                secure: true,
+              });
               router.replace("/profil");
             })
             .catch((err) => console.error(err));
