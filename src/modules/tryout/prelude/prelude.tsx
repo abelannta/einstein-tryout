@@ -1,4 +1,5 @@
 import { Basepage } from "@/modules/basePage";
+import Link from "next/link";
 import { useState } from "react";
 import { BsCalendarEvent, BsClockHistory } from "react-icons/bs";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
@@ -56,7 +57,8 @@ const prelude = {
   ],
 };
 
-export const PreludeTryout = () => {
+export const PreludeTryout = (props: any) => {
+  const { tryoutId } = props;
   const [content, setContent] = useState(prelude);
 
   return (
@@ -134,7 +136,9 @@ export const PreludeTryout = () => {
                 ))}
               </div>
             </div>
-            <button className="btn btn-primary w-full">Mulai</button>
+            <Link href={`/tryout/${tryoutId}/begin`}>
+              <button className="btn btn-primary w-full">Mulai</button>
+            </Link>
           </div>
         </div>
       </Basepage>

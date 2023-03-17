@@ -1,3 +1,22 @@
-import { PreludeTryout } from "@/modules/tryout/components/prelude";
+import { PreludeTryout } from "@/modules/tryout/prelude/prelude";
+import { GetServerSidePropsContext } from "next";
+import nookies from "nookies";
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const { tryoutId } = ctx.query;
+  const cookies = nookies.get(ctx);
+
+  if (!cookies.accessToken) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+      },
+    };
+  }
+
+  return {
+    props: { tryoutId },
+  };
+};
 
 export default PreludeTryout;

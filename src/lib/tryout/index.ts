@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_TRYOUTS, POST_TAKE_TRYOUT } from "../urlApi";
+import { GET_TAKEN_TRYOUTS, GET_TRYOUTS, POST_TAKE_TRYOUT } from "../urlApi";
 import { parseCookies } from "nookies";
 
 const cookies = parseCookies();
@@ -15,6 +15,17 @@ export const getTryouts = async () => {
 
 export const getSoalTryout = async (to_slug: string) => {
   const res = await axios.get(GET_TRYOUTS + to_slug + "/soal");
+
+  return res.data;
+};
+
+export const getTakenTryouts = async () => {
+  const res = await axios.get(GET_TAKEN_TRYOUTS, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
 
   return res.data;
 };
