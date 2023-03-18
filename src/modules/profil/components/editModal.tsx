@@ -1,4 +1,16 @@
+import { useState } from "react";
+
 export const EditModal = () => {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    password: "",
+    phone: "",
+    address: "",
+    pp_link: "",
+    gender: "",
+  });
+
   return (
     <>
       <input type="checkbox" id="edit-modal" className="modal-toggle" />
@@ -19,6 +31,12 @@ export const EditModal = () => {
               <input
                 id="name"
                 type="text"
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    user_name: e.target.value,
+                  }))
+                }
                 placeholder="Type here"
                 className="input input-bordered w-full"
               />
@@ -30,6 +48,12 @@ export const EditModal = () => {
               <input
                 id="alamat"
                 type="text"
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    address: e.target.value,
+                  }))
+                }
                 placeholder="Type here"
                 className="input input-bordered w-full"
               />
@@ -52,6 +76,12 @@ export const EditModal = () => {
               <input
                 id="telp"
                 type="tel"
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    phone: e.target.value,
+                  }))
+                }
                 placeholder="Type here"
                 className="input input-bordered w-full"
               />

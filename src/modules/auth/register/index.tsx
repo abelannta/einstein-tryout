@@ -1,14 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import register from "@/public/assets/register.png";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { postRegisterUser } from "@/lib/auth";
+import { useRouter } from "next/router";
 
 const RegisterPage = (props: any) => {
   const { text } = props;
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const validatePassword = () => {
+    if (formData.password !== confirmPassword) {
+      return "Password tidak sama!";
+    } else {
+      return null;
+    }
+  };
 
   const HandleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("submited");
+    const error = validatePassword();
+
+    if (error) {
+      toast.error(error);
+      return;
+    }
+
+    const registerPromise = postRegisterUser(
+      formData.firstName,
+      formData.email,
+      formData.password,
+      formData.phone
+    )
+      .then((res) => {
+        console.log(res);
+        toast.success("Berhasil Membuat Akun");
+        router.replace("/auth/login");
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -46,6 +84,12 @@ const RegisterPage = (props: any) => {
                         <input
                           type="text"
                           placeholder="First Name"
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              firstName: e.target.value,
+                            }))
+                          }
                           className="input input-bordered input-primary w-full"
                         />
                       </div>
@@ -56,6 +100,12 @@ const RegisterPage = (props: any) => {
                         <input
                           type="text"
                           placeholder="Last Name"
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              lastName: e.target.value,
+                            }))
+                          }
                           className="input input-bordered input-primary w-full"
                         />
                       </div>
@@ -66,6 +116,12 @@ const RegisterPage = (props: any) => {
                         <input
                           type="email"
                           placeholder="Email"
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              email: e.target.value,
+                            }))
+                          }
                           className="input input-bordered input-primary w-full"
                         />
                       </div>
@@ -76,6 +132,12 @@ const RegisterPage = (props: any) => {
                         <input
                           type="tel"
                           placeholder="Phone Number"
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              phone: e.target.value,
+                            }))
+                          }
                           className="input input-bordered input-primary w-full"
                         />
                       </div>
@@ -86,6 +148,12 @@ const RegisterPage = (props: any) => {
                         <input
                           type="password"
                           placeholder="Password"
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              password: e.target.value,
+                            }))
+                          }
                           className="input input-bordered input-primary w-full"
                         />
                       </div>
@@ -96,6 +164,7 @@ const RegisterPage = (props: any) => {
                         <input
                           type="password"
                           placeholder="Confirm Password"
+                          onChange={(e) => setConfirmPassword(e.target.value)}
                           className="input input-bordered input-primary w-full"
                         />
                       </div>

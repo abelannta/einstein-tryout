@@ -5,14 +5,12 @@ import { Navigation } from "../components/navigation";
 import { Pertanyaan } from "../components/pertanyaan";
 import { soalDummy } from "@/lib/tryout/soal";
 import Link from "next/link";
-
-export interface JawabanStateProps {
-  soalId: string;
-  jawabanId: string;
-}
+import { JawabanStateProps } from "@/lib/props/tryout";
+import { setCookie, parseCookies } from "nookies";
 
 export const BankSoal = () => {
-  const [soal, setSoal] = useState(soalDummy);
+  const [data, setData] = useState(soalDummy.listData);
+  const cookies = parseCookies();
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
   const [submited, setSubmited] = useState(false);
@@ -22,8 +20,8 @@ export const BankSoal = () => {
 
     for (let i = 0; i < length; i++) {
       jawabanArr.push({
-        soalId: "",
-        jawabanId: "",
+        soal_id: "",
+        answer: "",
       });
     }
 
@@ -35,12 +33,15 @@ export const BankSoal = () => {
 
     setJawaban((prev) => {
       const newArr = prev.slice();
-      newArr[index].jawabanId = value;
+      newArr[index].answer = value;
 
       return newArr;
     });
 
-    localStorage.setItem("draft", JSON.stringify(jawaban));
+    setCookie(null, "draftBankSoal", JSON.stringify(jawaban), {
+      maxAge: 3600,
+      secure: true,
+    });
   };
 
   const handleSubmit = () => {
@@ -49,10 +50,10 @@ export const BankSoal = () => {
 
   useEffect(() => {
     // @ts-ignore
-    const draft = JSON.parse(localStorage.getItem("draft"));
-    loopingStateJawaban(soal.listData.length);
+    loopingStateJawaban(data.length, data);
 
-    if (draft) {
+    if (cookies.draftBankSoal) {
+      const draft = JSON.parse(cookies.draftBankSoal);
       setJawaban(draft);
     }
   }, []);
@@ -64,7 +65,7 @@ export const BankSoal = () => {
           <div className="py-44 container mx-auto">
             <div className="flex justify-between items-center text-lg md:text-2xl font-bold mb-5">
               <h3>
-                Kuis ({currentPage + 1}/{soal.listData.length})
+                Kuis ({currentPage + 1}/{data.length})
               </h3>
               <h3>90:00</h3>
               <div className="block md:hidden">
@@ -81,7 +82,7 @@ export const BankSoal = () => {
             <div className="grid grid-cols-6 gap-10">
               <div className="col-span-6 md:col-span-4">
                 <Pertanyaan
-                  soal={soal.listData}
+                  soal={data}
                   currentPage={currentPage}
                   storingJawaban={storingJawaban}
                   jawaban={jawaban}
@@ -89,13 +90,13 @@ export const BankSoal = () => {
                   <Navigation
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
-                    length={soal.listData.length}
+                    length={data.length}
                   />
                 </Pertanyaan>
               </div>
               <div className="hidden md:block md:col-span-2">
                 <ListNomor
-                  length={soal.listData.length}
+                  length={data.length}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                   jawaban={jawaban}
@@ -138,7 +139,7 @@ export const BankSoal = () => {
       >
         <label className="modal-box relative">
           <ListNomor
-            length={soal.listData.length}
+            length={data.length}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             jawaban={jawaban}

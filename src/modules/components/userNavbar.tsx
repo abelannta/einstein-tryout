@@ -16,10 +16,9 @@ const UserNavbar = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(cookies.userData);
-
-    if (user) {
-      setUser(user);
+    if (cookies.userData) {
+      const userParse = JSON.parse(cookies.userData);
+      setUser(userParse);
     }
   }, []);
 
