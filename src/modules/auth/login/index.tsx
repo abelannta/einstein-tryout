@@ -22,6 +22,7 @@ const LoginPage = (props: any) => {
         setCookie(null, "accessToken", res.token, {
           maxAge: 3600,
           path: "/",
+          secure: true,
         });
         const setUserProfile = async () => {
           await getProfile(res.token)

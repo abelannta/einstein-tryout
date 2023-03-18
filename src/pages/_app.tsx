@@ -17,7 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <title>NineIntelegence</title>
       </Head>
-      <NextProgress delay={300} options={{ showSpinner: false }} />
+      <NextProgress
+        delay={300}
+        options={{ showSpinner: false }}
+        color="#003566"
+      />
       <Toaster />
       <Component {...pageProps} />
     </>

@@ -7,9 +7,11 @@ import { soalDummy } from "@/lib/tryout/soal";
 import { JawabanStateProps } from "@/lib/props/tryout";
 import { getSoalTryout, postSubmitTryout } from "@/lib/tryout";
 import { toast } from "react-hot-toast";
+import { setCookie, parseCookies } from "nookies";
 
 export const Tryout = (props: any) => {
   const { tryoutId, data } = props;
+  const cookies = parseCookies();
   const [soal, setSoal] = useState(soalDummy);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
@@ -50,15 +52,18 @@ export const Tryout = (props: any) => {
       return newArr;
     });
 
-    localStorage.setItem("draft", JSON.stringify(jawaban));
+    setCookie(null, "draft", JSON.stringify(jawaban), {
+      maxAge: 3600,
+      secure: true,
+    });
   };
 
   useEffect(() => {
     // @ts-ignore
-    const draft = JSON.parse(localStorage.getItem("draft"));
     loopingStateJawaban(data.length, data);
 
-    if (draft) {
+    if (cookies.draft) {
+      const draft = JSON.parse(cookies.draft);
       setJawaban(draft);
     }
   }, []);

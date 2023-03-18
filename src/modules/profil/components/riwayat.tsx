@@ -7,7 +7,10 @@ export const Riwayat = () => {
   const [riwayat, setRiwayat] = useState([]);
   const getListRiwayat = () => {
     const res = getHistory()
-      .then((res) => setRiwayat(res))
+      .then((res) => {
+        setRiwayat(res);
+        console.log(res);
+      })
       .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
   };
 
@@ -22,9 +25,6 @@ export const Riwayat = () => {
           <div className="bg-bold rounded-xl p-5" key={i}>
             <div className="flex justify-between items-center">
               <div className="flex items-center">
-                <div className="flex items-center justify-center rounded-full w-10 h-10 bg-background text-bold font-bold mr-5 aspect-square">
-                  1
-                </div>
                 <div className="flex flex-col">
                   <div className="text-md md:text-xl font-bold">
                     Tryout Biologi 1
