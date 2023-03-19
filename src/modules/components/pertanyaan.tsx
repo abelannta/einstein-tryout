@@ -14,7 +14,9 @@ export const Pertanyaan = (props: PertanyaanProps) => {
   return (
     <div>
       <div className="bg-paper p-5 md:p-10 rounded-xl mb-10 shadow-md">
-        <p className="text-md md:text-xl">{soal[currentPage].content}</p>
+        <p className="text-md md:text-xl select-none">
+          {soal[currentPage].content}
+        </p>
       </div>
       <div className="mb-5 text-md md:text-xl">
         {soal[currentPage].answers.map((item: any, idx: number) => (

@@ -8,6 +8,7 @@ import { JawabanStateProps } from "@/lib/props/tryout";
 import { getSoalTryout, postSubmitTryout } from "@/lib/tryout";
 import { toast } from "react-hot-toast";
 import { setCookie, parseCookies } from "nookies";
+import { TimeRundown } from "./components/timeRundown";
 
 export const Tryout = (props: any) => {
   const { tryoutId, data } = props;
@@ -15,10 +16,7 @@ export const Tryout = (props: any) => {
   const [soal, setSoal] = useState(soalDummy);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
-
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  const [date, setDate] = useState(new Date());
 
   const handleSubmit = () => {
     const res = postSubmitTryout(tryoutId, jawaban)
@@ -77,7 +75,7 @@ export const Tryout = (props: any) => {
               <h3>
                 Kuis ({currentPage + 1}/{data.length})
               </h3>
-              <h3>90:00</h3>
+              <TimeRundown milisecs={360000} />
               <div className="block md:hidden">
                 <label
                   htmlFor="list-number"

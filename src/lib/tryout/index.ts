@@ -50,9 +50,6 @@ export const postTakeTryout = async (to_slug: string, tipe: number) => {
 };
 
 export const postSubmitTryout = async (to_slug: string, jawaban: any) => {
-  console.log({
-    user_answers: jawaban,
-  });
   const res = await axios.post(
     GET_TRYOUTS + to_slug + "/submit",
     {

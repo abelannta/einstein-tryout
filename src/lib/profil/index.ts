@@ -9,7 +9,6 @@ export const getHistory = async () => {
   const res = await axios.get(GET_HISTORY, {
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
     },
   });
 
