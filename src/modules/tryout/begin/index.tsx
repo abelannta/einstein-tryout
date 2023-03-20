@@ -9,10 +9,12 @@ import { getSoalTryout, postSubmitTryout } from "@/lib/tryout";
 import { toast } from "react-hot-toast";
 import { setCookie, parseCookies } from "nookies";
 import { TimeRundown } from "./components/timeRundown";
+import { useRouter } from "next/router";
 
 export const Tryout = (props: any) => {
   const { tryoutId, data } = props;
   const cookies = parseCookies();
+  const router = useRouter();
   const [soal, setSoal] = useState(soalDummy);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
@@ -21,8 +23,8 @@ export const Tryout = (props: any) => {
   const handleSubmit = () => {
     const res = postSubmitTryout(tryoutId, jawaban)
       .then((res) => {
-        console.log(res);
         toast.success("Berhasil Submit Jawaban");
+        router.replace("/tryout/" + tryoutId + "/submited");
       })
       .catch((err) => console.error(err));
   };
