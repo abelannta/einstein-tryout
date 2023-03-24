@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 
 export const MainTryout = () => {
   return (
-    <div className="min-h-screen flex items-center relative container">
+    <div className="py-56 flex items-center relative container">
       <div className="bg-primary -z-10 rounded-full w-3/4 aspect-square absolute -bottom-1/6 -right-1/4"></div>
       <div className="flex items-center">
         <div className="grid grid-cols-2 gap-20">

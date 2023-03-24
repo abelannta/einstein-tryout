@@ -10,8 +10,7 @@ const RegisterPage = (props: any) => {
   const { text } = props;
   const router = useRouter();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     phone: "",
     password: "",
@@ -36,7 +35,7 @@ const RegisterPage = (props: any) => {
     }
 
     const registerPromise = postRegisterUser(
-      formData.firstName,
+      formData.name,
       formData.email,
       formData.password,
       formData.phone
@@ -77,33 +76,17 @@ const RegisterPage = (props: any) => {
                     className="text-primary"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 gap-x-5">
-                      <div className="flex flex-col">
+                      <div className="col-span-1 md:col-span-2 flex flex-col">
                         <label className="py-2 font-semibold text-base">
-                          First Name
+                          Name
                         </label>
                         <input
                           type="text"
-                          placeholder="First Name"
+                          placeholder="Full name"
                           onChange={(e) =>
                             setFormData((prev) => ({
                               ...prev,
-                              firstName: e.target.value,
-                            }))
-                          }
-                          className="input input-bordered input-primary w-full"
-                        />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="py-2 font-semibold text-base">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Last Name"
-                          onChange={(e) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              lastName: e.target.value,
+                              name: e.target.value,
                             }))
                           }
                           className="input input-bordered input-primary w-full"

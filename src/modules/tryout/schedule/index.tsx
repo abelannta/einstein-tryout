@@ -6,16 +6,9 @@ import { toast } from "react-hot-toast";
 import Moment from "react-moment";
 import tryoutDef from "@/public/assets/UTBK.png";
 
-export const ScheduleTryout = () => {
-  const [tryouts, setTryouts] = useState([]);
-
-  const getListTryout = () => {
-    const res = getTryouts()
-      .then((res) => {
-        setTryouts(res);
-      })
-      .catch((err) => toast.error(err.message));
-  };
+export const ScheduleTryout = (props: any) => {
+  const { data } = props;
+  const [tryouts, setTryouts] = useState(data);
 
   const handleTakeTryout = (to_slug: string) => {
     const res = postTakeTryout(to_slug, 1)
@@ -27,14 +20,10 @@ export const ScheduleTryout = () => {
       });
   };
 
-  useEffect(() => {
-    getListTryout();
-  }, []);
-
   return (
     <>
-      <Basepage>
-        <div className="bg-white">
+      <Basepage footer={true}>
+        <div className="bg-white min-h-screen">
           <div className="py-44 container">
             <h1 className="text-4xl font-bold text-center text-black mb-12">
               Jadwal Tryout

@@ -1,11 +1,11 @@
-export const LoadingTable = () => {
+import { AiOutlineLoading } from "react-icons/ai";
+
+export const Loading = () => {
   return (
-    <div className="py-2.5 px-7 animate-pulse">
-      <div className="grid grid-cols-4 items-center">
-        <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-[80%]"></div>
-        <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-[70%]"></div>
-        <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-[30%]"></div>
-      </div>
+    <div className="text-black flex items-center justify-center">
+      <AiOutlineLoading className="w-10 h-10 animate-spin mr-3" />
+      <AiOutlineLoading className="w-10 h-10 animate-spin mr-3" />
+      <AiOutlineLoading className="w-10 h-10 animate-spin mr-3" />
     </div>
   );
 };

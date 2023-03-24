@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_TAKEN_TRYOUTS, GET_TRYOUTS, POST_TAKE_TRYOUT } from "../urlApi";
+import {
+  GET_IS_SUBMITED_TRYOUT,
+  GET_TAKEN_TRYOUTS,
+  GET_TRYOUTS,
+  POST_TAKE_TRYOUT,
+} from "../urlApi";
 import { parseCookies } from "nookies";
 
 const cookies = parseCookies();
@@ -30,6 +35,17 @@ export const getTakenTryouts = async () => {
   return res.data;
 };
 
+export const getIsSubmitedTryout = async () => {
+  const res = await axios.get(GET_IS_SUBMITED_TRYOUT, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.data;
+};
+
 // POST
 
 export const postTakeTryout = async (to_slug: string, tipe: number) => {
@@ -46,7 +62,7 @@ export const postTakeTryout = async (to_slug: string, tipe: number) => {
     }
   );
 
-  return res;
+  return res.data;
 };
 
 export const postSubmitTryout = async (to_slug: string, jawaban: any) => {
