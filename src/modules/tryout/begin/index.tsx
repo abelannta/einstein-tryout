@@ -23,10 +23,16 @@ export const Tryout = (props: any) => {
   const handleSubmit = () => {
     const res = postSubmitTryout(tryoutId, jawaban)
       .then((res) => {
-        toast.success("Berhasil Submit Jawaban");
         router.replace("/tryout/" + tryoutId + "/submited");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        throw err;
+      });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Berhasil Submit Jawaban!",
+      error: "Submit Jawaban Gagal",
+    });
   };
 
   const loopingStateJawaban = (length: number, data: any) => {

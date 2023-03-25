@@ -12,12 +12,15 @@ export const ScheduleTryout = (props: any) => {
 
   const handleTakeTryout = (to_slug: string) => {
     const res = postTakeTryout(to_slug, 1)
-      .then((res) => {
-        toast.success("Berhasil Mendaftar Tryout!");
-      })
+      .then((res) => {})
       .catch((err) => {
-        toast.error(err.response.data.detail);
+        throw err;
       });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Berhasil Mendaftar Tryout!",
+      error: "Gagal Menambahkan Tryout!",
+    });
   };
 
   return (

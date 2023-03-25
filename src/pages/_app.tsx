@@ -20,7 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <NextProgress
         delay={300}
         options={{ showSpinner: false }}
-        color="#003566"
+        height="3px"
+        color="#FFC300"
       />
       <Toaster />
       <Component {...pageProps} />

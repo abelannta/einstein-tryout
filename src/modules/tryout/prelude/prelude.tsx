@@ -58,8 +58,10 @@ const prelude = {
 };
 
 export const PreludeTryout = (props: any) => {
-  const { tryoutId } = props;
+  const { tryoutId, currentTime } = props;
   const [content, setContent] = useState(prelude);
+
+  console.log(currentTime);
 
   return (
     <>

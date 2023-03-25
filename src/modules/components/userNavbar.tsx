@@ -12,6 +12,7 @@ const UserNavbar = () => {
 
   const handleLogout = () => {
     destroyCookie(null, "accessToken");
+    destroyCookie(null, "userData");
     router.push("/auth/login");
   };
 

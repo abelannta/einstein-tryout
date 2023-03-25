@@ -5,6 +5,7 @@ import nookies from "nookies";
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const { tryoutId } = ctx.query;
   const cookies = nookies.get(ctx);
+  const currentTime = new Date();
 
   if (!cookies.accessToken) {
     return {
@@ -15,7 +16,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 
   return {
-    props: { tryoutId },
+    props: { tryoutId, currentTime },
   };
 };
 
