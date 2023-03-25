@@ -1,67 +1,42 @@
 import { Basepage } from "@/modules/basePage";
 import Link from "next/link";
-import { useState } from "react";
 import { BsCalendarEvent, BsClockHistory } from "react-icons/bs";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { typeList, mapelList } from "@/lib/tryout/type";
+import moment from "moment";
+import dynamic from "next/dynamic";
 
-const prelude = {
-  idTryout: 1,
-  materi: [
-    {
-      idType: 1,
-      type: "Tes Potensi Skolastik",
-      mapel: [
-        {
-          idMapel: 1,
-          mapel: "Kemampuan Penalaran Umum",
-          total: 20,
-        },
-        {
-          idMapel: 2,
-          mapel: "Pengetahuan dan Pemahaman Umum",
-          total: 20,
-        },
-        {
-          idMapel: 3,
-          mapel: "Kemampuan Memahami Bacaan dan Menulis",
-          total: 15,
-        },
-        {
-          idMapel: 4,
-          mapel: "Pengetahuan Kuantitatif",
-          total: 15,
-        },
-      ],
-    },
-    {
-      idType: 2,
-      type: "Tes Literasi",
-      mapel: [
-        {
-          idMapel: 5,
-          mapel: "Literasi dalam Bahasa Indonesia",
-          total: 15,
-        },
-        {
-          idMapel: 6,
-          mapel: "Literasi dalam Bahasa Inggris",
-          total: 15,
-        },
-        {
-          idMapel: 7,
-          mapel: "Penalaran Matematika",
-          total: 20,
-        },
-      ],
-    },
-  ],
-};
+const PreludeCountDown = dynamic(
+  () => import("@/modules/tryout/prelude/components/countdown"),
+  {
+    ssr: false,
+  }
+);
 
 export const PreludeTryout = (props: any) => {
-  const { tryoutId, currentTime } = props;
-  const [content, setContent] = useState(prelude);
+  const { tryoutId, currentTime, detailData, soalData } = props;
 
-  console.log(currentTime);
+  const countMapel = Object.entries(
+    soalData.reduce((item: any, currentValue: any) => {
+      item[currentValue.mapel] = item[currentValue.mapel]
+        ? item[currentValue.mapel] + 1
+        : 1;
+
+      return item;
+    }, {})
+  ).map(([mapel, count]) => ({ mapel: parseInt(mapel), count }));
+
+  const getCount = (mapel: number) => {
+    const count: any = countMapel
+      .filter((item) => item.mapel === mapel)
+      .map((item, i) => item.count);
+
+    if (count > 0) {
+      return count;
+    }
+
+    return 0;
+  };
 
   return (
     <>
@@ -73,11 +48,13 @@ export const PreludeTryout = (props: any) => {
                 <h2 className="text-xl font-bold text-bold mb-2">
                   Detail Tryout
                 </h2>
+                <h4 className="text-md font-light">{detailData?.to_title}</h4>
                 <h4 className="text-md font-light">
-                  Tryout 1 NineIntelligence
-                </h4>
-                <h4 className="text-md font-light">
-                  1 Januari 1999, 00.01 WIB s/d 1 Januari 1999, 23.59 WIB
+                  {`${moment(detailData?.startsAt).format(
+                    "DD MMMM YYYY, hh:mm"
+                  )} WIB s/d ${moment(detailData?.endsAt).format(
+                    "DD MMMM YYYY, hh:mm"
+                  )} WIB`}
                 </h4>
               </div>
               <div className="flex justify-between items-center py-5">
@@ -86,53 +63,55 @@ export const PreludeTryout = (props: any) => {
                   <h3 className="text-lg font-light">TO dimulai</h3>
                 </div>
                 <h3 className="text-lg font-light text-bold">
-                  0 hari, 0 jam, 0 menit
+                  <PreludeCountDown startAt={detailData?.startsAt} />
                 </h3>
               </div>
               <div className="grid grid-cols-2 divide-x divide-slate-400 pt-5">
                 <div className="flex justify-between items-center col-span-1 pr-5">
                   <div className="flex items-center gap-3">
                     <BsClockHistory className="w-5 h-5 text-bold" />
-                    <h3 className="text-lg font-light">TO dimulai</h3>
+                    <h3 className="text-lg font-light">Durasi Pengerjaan</h3>
                   </div>
                   <h3 className="text-lg font-light text-bold">60 menit</h3>
                 </div>
                 <div className="flex justify-between items-center col-span-1 pl-5">
                   <div className="flex items-center gap-3">
                     <HiOutlineClipboardDocumentList className="w-6 h-6 text-bold" />
-                    <h3 className="text-lg font-light">TO dimulai</h3>
+                    <h3 className="text-lg font-light">Jumlah Soal</h3>
                   </div>
-                  <h3 className="text-lg font-light text-bold">20 Soal</h3>
+                  <h3 className="text-lg font-light text-bold">{`${soalData?.length} Soal`}</h3>
                 </div>
               </div>
             </div>
             <div className="border border-black rounded-xl p-8 text-primary my-10">
               <div className="flex flex-col gap-5 w-full">
-                {content.materi.map((item, i) => (
+                {typeList.map((item, i) => (
                   <div className="w-full" key={i}>
                     <div className="flex items-center">
                       <div className="border-2 rounded-full border-bold w-3 h-3"></div>
                       <h3 className="text-lg font-semibold ml-2">
-                        {item.type}
+                        {item.name}
                       </h3>
                     </div>
                     <ul className="list-disc list-outside marker:text-bold divide-y divide-slate-400 ml-10">
-                      {item.mapel.map((item, i) => (
-                        <div
-                          className="flex justify-between items-center"
-                          key={i}
-                        >
-                          <li className="text-md font-light py-2">
-                            {item.mapel}
-                          </li>
-                          <div className="flex border-l border-slate-400 pl-5">
-                            <HiOutlineClipboardDocumentList className="w-6 h-6 mr-3" />
-                            <h4 className="text-md font-light">
-                              {item.total} Soal
-                            </h4>
+                      {mapelList
+                        .filter((mapel) => mapel.type === item.id)
+                        .map((item, i) => (
+                          <div
+                            className="flex justify-between items-center"
+                            key={i}
+                          >
+                            <li className="text-md font-light py-2">
+                              {item.name}
+                            </li>
+                            <div className="flex justify-between pl-5 w-28">
+                              <HiOutlineClipboardDocumentList className="w-6 h-6 mr-3" />
+                              <h4 className="text-md font-light">{`${getCount(
+                                item.id
+                              )} Soal`}</h4>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
                     </ul>
                   </div>
                 ))}
