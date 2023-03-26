@@ -1,15 +1,36 @@
+import { putProfil } from "@/lib/profil";
 import { useState } from "react";
+import { parseCookies } from "nookies";
+import { toast } from "react-hot-toast";
 
 export const EditModal = () => {
+  const cookies = parseCookies();
+  const userData = JSON.parse(cookies?.userData);
   const [formData, setFormData] = useState({
+    user_id: userData.user_id,
     user_name: "",
-    user_email: "",
-    password: "",
+    user_email: userData.user_email,
     phone: "",
     address: "",
     pp_link: "",
     gender: "",
   });
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const res = putProfil(formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        throw err;
+      });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Data Berhasil Diubah!",
+      error: "Data Tidak Berhasil Diubah!",
+    });
+  };
 
   return (
     <>
@@ -23,7 +44,7 @@ export const EditModal = () => {
             ✕
           </label>
           <h3 className="font-bold text-lg">Ubah Profile</h3>
-          <form className="w-full my-5">
+          <form onSubmit={(e) => handleSubmit(e)} className="w-full my-5">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Nama</span>
@@ -40,6 +61,26 @@ export const EditModal = () => {
                 placeholder="Type here"
                 className="input input-bordered w-full"
               />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Jenis Kelamin</span>
+              </label>
+              <select
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    gender: e.target.value,
+                  }))
+                }
+                className="select select-bordered w-full"
+              >
+                <option disabled selected>
+                  Pilih Jenis Kelamin
+                </option>
+                <option value="laki-laki">Laki-laki</option>
+                <option value="perempuan">Perempuan</option>
+              </select>
             </div>
             <div className="form-control w-full">
               <label className="label">
@@ -86,15 +127,15 @@ export const EditModal = () => {
                 className="input input-bordered w-full"
               />
             </div>
+            <div className="modal-action">
+              <button
+                type="submit"
+                className="btn w-full mt-5 bg-background text-bold"
+              >
+                Simpan
+              </button>
+            </div>
           </form>
-          <div className="modal-action">
-            <label
-              htmlFor="edit-modal"
-              className="btn w-full mt-5 bg-background text-bold"
-            >
-              Simpan
-            </label>
-          </div>
         </div>
       </div>
     </>

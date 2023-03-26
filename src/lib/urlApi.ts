@@ -7,7 +7,7 @@ export const POST_AUTH_REGISTER = BASE_URL_API + "users/register";
 // Profile
 export const GET_PROFILE = BASE_URL_API + "users/profile";
 export const GET_HISTORY = BASE_URL_API + "users/history";
-export const PUT_PROFILE = BASE_URL_API + "users/profile";
+export const PUT_PROFILE = BASE_URL_API + "users/profile/edit";
 
 // Tryout
 export const GET_TRYOUTS = BASE_URL_API + "tryouts/";

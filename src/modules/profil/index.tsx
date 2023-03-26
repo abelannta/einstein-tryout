@@ -10,6 +10,7 @@ import fotoProfil from "@/public/assets/pepe.webp";
 import Image from "next/legacy/image";
 import { Progres } from "./components/progres";
 import { EditModal } from "./components/editModal";
+import { parseCookies } from "nookies";
 
 enum TabsStatus {
   Overview = "",
@@ -20,6 +21,8 @@ enum TabsStatus {
 
 export const Profile = () => {
   const [tabs, setTabs] = useState<TabsStatus>(TabsStatus.Overview);
+  const cookies = parseCookies();
+  const userData = JSON.parse(cookies?.userData);
   const router = useRouter();
 
   useEffect(() => {
@@ -51,7 +54,9 @@ export const Profile = () => {
                     <Image src={fotoProfil} alt="Foto Profil" />
                   </div>
                 </div>
-                <div className="text-lg md:text-2xl font-bold">Abel Ananta</div>
+                <div className="text-lg md:text-2xl font-bold">
+                  {userData?.user_name}
+                </div>
                 <div className="mt-7">
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center">

@@ -16,9 +16,9 @@ export const getHistory = async () => {
 };
 
 interface putProfilProps {
+  user_id: string;
   user_name: string;
   user_email: string;
-  password: string;
   phone: string;
   address: string;
   pp_link: string;
@@ -26,7 +26,7 @@ interface putProfilProps {
 }
 
 export const putProfil = async (data: putProfilProps) => {
-  const res = await axios.post(PUT_PROFILE, data, {
+  const res = await axios.put(PUT_PROFILE, data, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",

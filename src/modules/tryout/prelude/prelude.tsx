@@ -117,9 +117,18 @@ export const PreludeTryout = (props: any) => {
                 ))}
               </div>
             </div>
-            <Link href={`/tryout/${tryoutId}/begin`}>
-              <button className="btn btn-primary w-full">Mulai</button>
-            </Link>
+
+            <button
+              className="btn btn-primary w-full"
+              disabled={currentTime > detailData?.startsAt ? false : true}
+            >
+              <Link
+                href={`/tryout/${tryoutId}/begin`}
+                className="w-full h-full flex items-center justify-center"
+              >
+                Mulai
+              </Link>
+            </button>
           </div>
         </div>
       </Basepage>
