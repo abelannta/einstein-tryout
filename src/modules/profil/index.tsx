@@ -21,9 +21,16 @@ enum TabsStatus {
 
 export const Profile = () => {
   const [tabs, setTabs] = useState<TabsStatus>(TabsStatus.Overview);
+  const [user, setUser] = useState<any>({});
   const cookies = parseCookies();
-  const userData = JSON.parse(cookies?.userData);
   const router = useRouter();
+
+  useEffect(() => {
+    if (cookies.userData) {
+      const userData = JSON.parse(cookies?.userData);
+      setUser(userData);
+    }
+  }, []);
 
   useEffect(() => {
     if (router.isReady && router.query.tabs) {
@@ -55,7 +62,7 @@ export const Profile = () => {
                   </div>
                 </div>
                 <div className="text-lg md:text-2xl font-bold">
-                  {userData?.user_name}
+                  {user?.user_name}
                 </div>
                 <div className="mt-7">
                   <div className="flex flex-col gap-3">

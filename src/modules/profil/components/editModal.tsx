@@ -1,20 +1,27 @@
 import { putProfil } from "@/lib/profil";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
 import { toast } from "react-hot-toast";
 
 export const EditModal = () => {
   const cookies = parseCookies();
-  const userData = JSON.parse(cookies?.userData);
+  const [user, setUser] = useState<any>({});
   const [formData, setFormData] = useState({
-    user_id: userData.user_id,
+    user_id: user.user_id,
     user_name: "",
-    user_email: userData.user_email,
+    user_email: user.user_email,
     phone: "",
     address: "",
     pp_link: "",
     gender: "",
   });
+
+  useEffect(() => {
+    if (cookies.userData) {
+      const userData = JSON.parse(cookies?.userData);
+      setUser(userData);
+    }
+  }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
