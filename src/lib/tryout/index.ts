@@ -6,6 +6,7 @@ import {
   POST_TAKE_TRYOUT,
 } from "../urlApi";
 import { parseCookies } from "nookies";
+import { JawabanStateProps } from "../props/tryout";
 
 const cookies = parseCookies();
 const token = cookies.accessToken;
@@ -79,5 +80,41 @@ export const postSubmitTryout = async (to_slug: string, jawaban: any) => {
     }
   );
 
-  return res;
+  return res.data;
+};
+
+export const postStartTryout = async (to_slug: string) => {
+  const res = await axios.post(
+    GET_TRYOUTS + to_slug + "/start",
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return res.data;
+};
+
+export const postUpdateDraft = async (
+  jawaban: JawabanStateProps[],
+  to_slug: string
+) => {
+  console.log(jawaban);
+  const res = await axios.post(
+    GET_TRYOUTS + to_slug + "/ongoing",
+    {
+      user_answers: jawaban,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return res.data;
 };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { toast } from "react-hot-toast";
 import Countdown, { zeroPad } from "react-countdown";
 
@@ -8,6 +8,10 @@ interface CoundownProps {
 
 export const TimeRundown = (props: CoundownProps) => {
   const { milisecs } = props;
+
+  const time = useMemo(() => {
+    return Date.now() + milisecs;
+  }, []);
 
   const renderer = ({ hours, minutes, seconds, completed }: any) => {
     if (completed) {
@@ -21,13 +25,5 @@ export const TimeRundown = (props: CoundownProps) => {
     }
   };
 
-  return (
-    <>
-      <Countdown
-        date={Date.now() + milisecs}
-        renderer={renderer}
-        zeroPadTime={2}
-      />
-    </>
-  );
+  return <Countdown date={time} renderer={renderer} />;
 };

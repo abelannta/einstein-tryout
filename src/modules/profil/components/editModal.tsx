@@ -80,9 +80,10 @@ export const EditModal = () => {
                     gender: e.target.value,
                   }))
                 }
+                defaultValue=""
                 className="select select-bordered w-full"
               >
-                <option disabled selected>
+                <option disabled value="">
                   Pilih Jenis Kelamin
                 </option>
                 <option value="laki-laki">Laki-laki</option>

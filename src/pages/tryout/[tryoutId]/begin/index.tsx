@@ -23,17 +23,29 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const valid = await check.json();
 
   if (valid.detail !== "You have submitted this tryout!") {
-    const res = await fetch(GET_TRYOUTS + tryoutId + "/soal");
-    const data = await res.json();
+    const [detailRes, soalRes, draftRes] = await Promise.all([
+      fetch(GET_TRYOUTS + tryoutId),
+      fetch(GET_TRYOUTS + tryoutId + "/soal"),
+      fetch(GET_TRYOUTS + tryoutId + "/start/retrieve", {
+        headers: {
+          Authorization: `Bearer ${cookies.accessToken}`,
+        },
+      }),
+    ]);
+    const [detailData, soalData, draftData] = await Promise.all([
+      detailRes.json(),
+      soalRes.json(),
+      draftRes.json(),
+    ]);
 
-    if (!data) {
+    if (!detailData) {
       return {
         notFound: true,
       };
     }
 
     // Pass data to the page via props
-    return { props: { tryoutId, data, valid } };
+    return { props: { tryoutId, detailData, soalData, draftData, valid } };
   } else {
     return {
       redirect: {

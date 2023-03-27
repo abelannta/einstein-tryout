@@ -5,6 +5,9 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { typeList, mapelList } from "@/lib/tryout/type";
 import moment from "moment";
 import dynamic from "next/dynamic";
+import { postStartTryout } from "@/lib/tryout";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const PreludeCountDown = dynamic(
   () => import("@/modules/tryout/prelude/components/countdown"),
@@ -15,6 +18,7 @@ const PreludeCountDown = dynamic(
 
 export const PreludeTryout = (props: any) => {
   const { tryoutId, currentTime, detailData, soalData } = props;
+  const router = useRouter();
 
   const countMapel = Object.entries(
     soalData.reduce((item: any, currentValue: any) => {
@@ -36,6 +40,21 @@ export const PreludeTryout = (props: any) => {
     }
 
     return 0;
+  };
+
+  const handleStart = () => {
+    const res = postStartTryout(tryoutId)
+      .then((res) => {
+        router.push("/tryout/[tryoutId]/begin", `/tryout/${tryoutId}/begin`);
+      })
+      .catch((err) => {
+        throw err;
+      });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Tryout Akan Dimulai",
+      error: "Gagal Memulai Tryout!",
+    });
   };
 
   return (
@@ -119,15 +138,11 @@ export const PreludeTryout = (props: any) => {
             </div>
 
             <button
+              onClick={handleStart}
               className="btn btn-primary w-full"
-              disabled={currentTime > detailData?.startsAt ? false : true}
+              // disabled={currentTime > detailData?.startsAt ? false : true}
             >
-              <Link
-                href={`/tryout/${tryoutId}/begin`}
-                className="w-full h-full flex items-center justify-center"
-              >
-                Mulai
-              </Link>
+              Mulai
             </button>
           </div>
         </div>
