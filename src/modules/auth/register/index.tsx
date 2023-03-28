@@ -182,7 +182,7 @@ const RegisterPage = (props: any) => {
                       type="submit"
                       className="btn btn-primary rounded-xl text-bold w-full py-2 mt-7 mb-10"
                     >
-                      Sign In
+                      Sign Up
                     </button>
                   </form>
                   <p className="text-center">

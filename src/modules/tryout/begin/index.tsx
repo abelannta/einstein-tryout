@@ -63,7 +63,7 @@ export const Tryout = (props: any) => {
   const handleUpdateDraft = (answers: JawabanStateProps[]) => {
     const res = postUpdateDraft(answers, tryoutId)
       .then((res) => {
-        toast.success("Saved...", {
+        toast.success("Draft Saved...", {
           position: "bottom-right",
         });
       })
@@ -77,7 +77,7 @@ export const Tryout = (props: any) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       handleUpdateDraft(latestJawaban.current);
-    }, 120000);
+    }, 60000);
 
     return () => clearInterval(intervalId);
   }, []);
