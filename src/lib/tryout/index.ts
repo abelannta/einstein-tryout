@@ -47,6 +47,17 @@ export const getIsSubmitedTryout = async () => {
   return res.data;
 };
 
+export const getReviewTryout = async (to_slug: string) => {
+  const res = await axios.get(GET_TRYOUTS + to_slug + "/pembahasan", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.data;
+};
+
 // POST
 
 export const postTakeTryout = async (to_slug: string, tipe: number) => {

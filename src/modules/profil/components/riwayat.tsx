@@ -41,7 +41,7 @@ export const Riwayat = () => {
                 <div className="text-md md:text-lg font-bold mr-5">
                   Nilai: {item.to_hasil.score}
                 </div>
-                <Link href="/pembahasan">
+                <Link href={`/tryout/${item.to_details.to_slug}/review`}>
                   <button className="text-md md:text-lg p-3 flex justify-center bg-background text-bold font-bold rounded-xl">
                     Pembahasan
                   </button>

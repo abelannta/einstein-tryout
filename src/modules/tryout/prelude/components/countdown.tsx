@@ -10,7 +10,7 @@ const PreludeCountDown = (props: PreludeCountDownProps) => {
   const renderer = ({ days, hours, minutes, completed }: any) => {
     if (completed) {
       // Render a completed state
-      return <>Nice</>;
+      return <>Tryout Sudah Dimulai</>;
     } else {
       // Render a countdown
       return (
