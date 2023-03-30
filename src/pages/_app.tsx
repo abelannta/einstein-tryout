@@ -1,8 +1,18 @@
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import Head from "next/head";
 import NextProgress from "next-progress";
 import { Toaster } from "react-hot-toast";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import "@/styles/globals.css";
+
+// export function reportWebVitals({ id, name, label, value }: NextWebVitalsMetric) {
+//   event(name, {
+//     category: label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+//     value: Math.round(name === "CLS" ? value * 1000 : value), // values must be integers
+//     label: id, // id unique to current page load
+//     nonInteraction: true, // avoids affecting bounce rate.
+//   });
+// }
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -17,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <title>NineIntelegence</title>
       </Head>
+      <GoogleAnalytics trackPageViews />
       <NextProgress
         delay={300}
         options={{ showSpinner: false }}

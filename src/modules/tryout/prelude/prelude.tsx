@@ -91,7 +91,7 @@ export const PreludeTryout = (props: any) => {
                     <BsClockHistory className="w-5 h-5 text-bold" />
                     <h3 className="text-lg font-light">Durasi Pengerjaan</h3>
                   </div>
-                  <h3 className="text-lg font-light text-bold">60 menit</h3>
+                  <h3 className="text-lg font-light text-bold">{`${detailData?.duration} menit`}</h3>
                 </div>
                 <div className="flex justify-between items-center col-span-1 pl-5">
                   <div className="flex items-center gap-3">
