@@ -1,158 +1,69 @@
-import { useEffect, useState } from "react";
 import { Basepage } from "../basePage";
-import { ListNomor } from "../components/listNomor";
-import { Navigation } from "../components/navigation";
-import { Pertanyaan } from "../components/pertanyaan";
-import { soalDummy } from "@/lib/tryout/soal";
-import Link from "next/link";
-import { JawabanStateProps } from "@/lib/props/tryout";
-import { setCookie, parseCookies } from "nookies";
+import Image from "next/image";
+import tryoutDef from "@/public/assets/UTBK.png";
+import Moment from "react-moment";
+import { toast } from "react-hot-toast";
+import { useState } from "react";
+import { postTakeBankSoal } from "@/lib/bankSoal";
 
-export const BankSoal = () => {
-  const [data, setData] = useState(soalDummy.listData);
-  const cookies = parseCookies();
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
-  const [submited, setSubmited] = useState(false);
+export const BankSoalRegister = (props: any) => {
+  const { data } = props;
+  const [bankSoal, setBankSoal] = useState(data);
 
-  const loopingStateJawaban = (length: number) => {
-    let jawabanArr = [];
-
-    for (let i = 0; i < length; i++) {
-      jawabanArr.push({
-        soal_id: "",
-        answer: "",
+  const handleTakeBankSoal = (to_slug: string) => {
+    const res = postTakeBankSoal(to_slug, 1)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+        throw err;
       });
-    }
-
-    setJawaban(jawabanArr);
-  };
-
-  const storingJawaban = (index: number, e: any) => {
-    const value = e.target.value;
-
-    setJawaban((prev) => {
-      const newArr = prev.slice();
-      newArr[index].answer = value;
-
-      return newArr;
-    });
-
-    setCookie(null, "draftBankSoal", JSON.stringify(jawaban), {
-      maxAge: 3600,
-      secure: true,
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Berhasil Mendaftar Bank Soal!",
+      error: "Gagal Menambahkan Bank Soal!",
     });
   };
-
-  const handleSubmit = () => {
-    setSubmited(true);
-  };
-
-  useEffect(() => {
-    // @ts-ignore
-    loopingStateJawaban(data.length, data);
-
-    if (cookies.draftBankSoal) {
-      const draft = JSON.parse(cookies.draftBankSoal);
-      setJawaban(draft);
-    }
-  }, []);
 
   return (
     <>
-      <Basepage>
-        <div className="bg-white text-black">
-          <div className="py-44 container mx-auto">
-            <div className="flex justify-between items-center text-lg md:text-2xl font-bold mb-5">
-              <h3>
-                Kuis ({currentPage + 1}/{data.length})
-              </h3>
-              <h3>90:00</h3>
-              <div className="block md:hidden">
-                <label
-                  htmlFor="list-number"
-                  className="flex flex-col gap-1 w-5 h-5"
-                >
-                  <div className="w-full rounded-xl bg-black h-1"></div>
-                  <div className="w-full rounded-xl bg-black h-1"></div>
-                  <div className="w-full rounded-xl bg-black h-1"></div>
-                </label>
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-10">
-              <div className="col-span-6 md:col-span-4">
-                <Pertanyaan
-                  soal={data}
-                  currentPage={currentPage}
-                  storingJawaban={storingJawaban}
-                  jawaban={jawaban}
-                >
-                  <Navigation
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    length={data.length}
-                  />
-                </Pertanyaan>
-              </div>
-              <div className="hidden md:block md:col-span-2">
-                <ListNomor
-                  length={data.length}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                  jawaban={jawaban}
-                >
-                  <label
-                    htmlFor="submit"
-                    className="btn w-full bg-background text-bold"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </label>
-                </ListNomor>
-              </div>
+      <Basepage footer={true}>
+        <div className="bg-white min-h-screen">
+          <div className="py-44 container">
+            <h1 className="text-4xl font-bold text-center text-black mb-12">
+              Bank Soal
+            </h1>
+            <div className="grid grid-cols-12 gap-5 gap-y-8">
+              {bankSoal?.map((item: any, i: number) => (
+                <div className="col-span-4" key={i}>
+                  <div className="bg-primary rounded-xl p-7">
+                    <div className="w-full aspect-video bg-gray-400 rounded-xl overflow-hidden">
+                      <Image
+                        src={tryoutDef}
+                        alt="Gambar Tryout"
+                        className="w-full"
+                      />
+                    </div>
+                    <div className="flex flex-col mt-5 items-center">
+                      <h4 className="text-xl font-semibold text-bold">
+                        {item.bs_title}
+                      </h4>
+                      <p className="text-base font-light text-white mt-5 text-center">
+                        {item.bs_summary}
+                      </p>
+                    </div>
+                    <button
+                      onClick={(e) => handleTakeBankSoal(item.bs_slug)}
+                      className="btn btn-secondary text-black mt-5 w-full"
+                    >
+                      Daftar
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </Basepage>
-      <input type="checkbox" id="submit" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">
-            Apakah anda sudah yakin dengan semua jawaban?
-          </h3>
-          <div className="modal-action">
-            <label htmlFor="submit" className="btn bg-background text-bold">
-              Cancel
-            </label>
-            <Link href="/bank-soal/review">
-              <label htmlFor="submit" className="btn bg-background text-bold">
-                Submit
-              </label>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <input type="checkbox" id="list-number" className="modal-toggle" />
-      <label
-        htmlFor="list-number"
-        className="modal modal-bottom sm:modal-middle"
-      >
-        <label className="modal-box relative">
-          <ListNomor
-            length={data.length}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            jawaban={jawaban}
-          >
-            <label
-              htmlFor="submit"
-              className="btn w-full bg-background text-bold"
-            >
-              Submit
-            </label>
-          </ListNomor>
-        </label>
-      </label>
     </>
   );
 };

@@ -14,3 +14,7 @@ export const GET_TRYOUTS = BASE_URL_API + "tryouts/";
 export const GET_TAKEN_TRYOUTS = BASE_URL_API + "tryouts/taken";
 export const POST_TAKE_TRYOUT = BASE_URL_API + "tryouts/take";
 export const GET_IS_SUBMITED_TRYOUT = BASE_URL_API + "tryouts/check/";
+
+// Bank Soal
+export const GET_BANKSOAL = BASE_URL_API + "banksoal/";
+export const POST_TAKE_BANKSOAL = BASE_URL_API + "banksoal/take";
