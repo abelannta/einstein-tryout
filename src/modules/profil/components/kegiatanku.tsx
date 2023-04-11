@@ -19,6 +19,13 @@ export const Kegiatanku = () => {
 
   return (
     <div className="flex flex-col gap-5">
+      <div className="flex justify-end mb-5">
+        <Link href={`/tryout/schedule`}>
+          <button className="text-sm md:text-lg p-3 w-fit flex justify-center bg-background text-bold font-bold rounded-xl">
+            Tambah Tryout
+          </button>
+        </Link>
+      </div>
       {takenTryouts.map((item: any, i: number) => (
         <div className="bg-bold rounded-xl p-5" key={i}>
           <div className="flex justify-between items-center">
