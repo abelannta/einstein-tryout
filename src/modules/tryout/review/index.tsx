@@ -31,11 +31,11 @@ export const ReviewTryout = (props: any) => {
       <Basepage>
         <div className="bg-white text-black">
           <div className="py-44 container mx-auto">
-            <div className="flex justify-between items-center">
-              <div className="text-lg md:text-2xl font-bold mb-5">
+            <div className="flex justify-between items-center mb-5">
+              <div className="flex items-center text-lg md:text-2xl font-bold">
                 <h3>Review Tryout 1</h3>
               </div>
-              <div className="flex gap-3">
+              <div className="hidden md:flex gap-3">
                 <div className="badge badge-lg badge-secondary text-primary">
                   {filterType(review[currentPage].soal_detail.type)}
                 </div>
@@ -45,7 +45,7 @@ export const ReviewTryout = (props: any) => {
               </div>
               <div className="block md:hidden">
                 <label
-                  htmlFor="list-number"
+                  htmlFor="list-number-review"
                   className="flex flex-col gap-1 w-5 h-5"
                 >
                   <div className="w-full rounded-xl bg-black h-1"></div>
@@ -87,8 +87,9 @@ export const ReviewTryout = (props: any) => {
           </div>
         </div>
       </Basepage>
+      <input type="checkbox" id="list-number-review" className="modal-toggle" />
       <label
-        htmlFor="list-number"
+        htmlFor="list-number-review"
         className="modal modal-bottom sm:modal-middle"
       >
         <label className="modal-box relative">

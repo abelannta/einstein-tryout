@@ -37,7 +37,7 @@ export const ScheduleTryout = (props: any) => {
                 ?.slice(0)
                 .reverse()
                 .map((item: any, i: number) => (
-                  <div className="col-span-4" key={i}>
+                  <div className="col-span-12 md:col-span-4" key={i}>
                     <div className="bg-primary rounded-xl p-7">
                       <div className="w-full aspect-video bg-gray-400 rounded-xl overflow-hidden">
                         <Image

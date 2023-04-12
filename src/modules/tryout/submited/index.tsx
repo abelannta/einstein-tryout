@@ -8,7 +8,7 @@ export const SubmitedTryout = () => {
         <div className="bg-white min-h-screen">
           <div className="py-44 container max-w-4xl">
             <div className="flex flex-col items-center justify-center bg-primary rounded-xl p-8">
-              <h2 className="text-xl font-bold text-bold">
+              <h2 className="text-xl font-bold text-bold text-center">
                 Terima kasih telah mengikuti Tryout!
               </h2>
               <p className="text-base font-light text-center py-3">
