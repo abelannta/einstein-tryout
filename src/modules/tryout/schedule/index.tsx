@@ -19,7 +19,8 @@ export const ScheduleTryout = (props: any) => {
       });
     toast.promise(res, {
       loading: "Loading...",
-      success: "Berhasil Mendaftar Tryout!",
+      success:
+        "Berhasil Mendaftar Tryout! Silahkan cek pada halaman Kegiatanku",
       error: "Gagal Menambahkan Tryout!",
     });
   };

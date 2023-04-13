@@ -10,7 +10,6 @@ export const Riwayat = () => {
     const res = getHistory()
       .then((res) => {
         setRiwayat(res);
-        console.log(res);
       })
       .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
   };

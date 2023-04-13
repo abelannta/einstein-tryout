@@ -89,7 +89,7 @@ const TryoutSection = () => {
         </Link>
       </div>
       <div className="flex flex-col gap-5">
-        <h4 className="text-2xl font-bold">Ongoing</h4>
+        <h4 className="text-lg md:text-2xl font-bold">Ongoing</h4>
         {takenTryouts
           .filter((item: any) => item.details === "Ongoing")
           .map((item: any, i: number) => (
@@ -116,12 +116,14 @@ const TryoutSection = () => {
         {takenTryouts.filter((item: any) => item.details === "Ongoing")
           .length === 0 && (
           <div className="flex items-center justify-center">
-            <h3 className="text-xl font-light">Tidak ada data ditemukan</h3>
+            <h3 className="text-md md:text-xl font-light">
+              Tidak ada data ditemukan
+            </h3>
           </div>
         )}
       </div>
       <div className="flex flex-col gap-5 mt-5">
-        <h4 className="text-2xl font-bold">Upcoming</h4>
+        <h4 className="text-lg md:text-2xl font-bold">Upcoming</h4>
         {takenTryouts
           .filter((item: any) => item.details === "Upcoming")
           .map((item: any, i: number) => (
@@ -148,7 +150,9 @@ const TryoutSection = () => {
         {takenTryouts.filter((item: any) => item.details === "Upcoming")
           .length === 0 && (
           <div className="flex items-center justify-center">
-            <h3 className="text-xl font-light">Tidak ada data ditemukan</h3>
+            <h3 className="text-md md:text-xl font-light">
+              Tidak ada data ditemukan
+            </h3>
           </div>
         )}
       </div>
@@ -159,28 +163,28 @@ const TryoutSection = () => {
 const BankSoalSection = () => {
   const [takenTryouts, setTakenTryouts] = useState([]);
 
-  const getListTakenTryouts = () => {
-    const res = getTakenBankSoal()
-      .then((res) => {
-        console.log(res);
-        // setTakenTryouts(res)
-      })
-      .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
-  };
+  // const getListTakenTryouts = () => {
+  //   const res = getTakenBankSoal()
+  //     .then((res) => {
+  //       console.log(res);
+  //       // setTakenTryouts(res)
+  //     })
+  //     .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
+  // };
 
-  useEffect(() => {
-    getListTakenTryouts();
-  }, []);
+  // useEffect(() => {
+  //   getListTakenTryouts();
+  // }, []);
 
   return (
     <>
-      <div className="flex justify-end mb-5">
+      {/* <div className="flex justify-end mb-5">
         <Link href={`/tryout/schedule`}>
           <button className="text-sm md:text-lg p-3 w-fit flex justify-center bg-background text-bold font-bold rounded-xl">
             Tambah Bank Soal
           </button>
         </Link>
-      </div>
+      </div> */}
       {takenTryouts.map((item: any, i: number) => (
         <div className="bg-bold rounded-xl p-5" key={i}>
           <div className="flex justify-between items-center">
