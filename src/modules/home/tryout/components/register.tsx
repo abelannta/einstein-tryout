@@ -6,8 +6,8 @@ export const RegisterTryoutHome = () => {
   return (
     <div className="py-44 relative container">
       <div className="bg-primary -z-10 rounded-full w-3/4 aspect-square absolute -top-1/4 -left-1/4"></div>
-      <div className="grid grid-cols-2 gap-20">
-        <div className="flex flex-col gap-5 justify-center max-w-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+        <div className="order-2 md:order-1 flex flex-col gap-5 justify-center max-w-lg">
           <h1 className="leading-snug text-4xl font-bold">
             Ayo <span className="text-bold">Daftarkan</span> Dirimu Sekarang
             Juga
@@ -22,7 +22,7 @@ export const RegisterTryoutHome = () => {
             </button>
           </Link>
         </div>
-        <div className="flex justify-center max-w-2xl">
+        <div className="order-1 md:order-2 flex justify-center max-w-2xl">
           <Image src={RegisterTryout} />
         </div>
       </div>

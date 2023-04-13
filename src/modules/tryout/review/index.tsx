@@ -80,7 +80,7 @@ export const ReviewTryout = (props: any) => {
                 </div>
                 <div className="flex justify-between border border-gray-300 p-10 py-5 rounded-b-xl">
                   <div className="text-xl font-bold">Nilai</div>
-                  <div className="text-xl font-bold text-bold">93</div>
+                  <div className="text-xl font-bold text-bold">-</div>
                 </div>
               </div>
             </div>

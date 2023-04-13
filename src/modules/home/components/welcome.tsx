@@ -6,7 +6,7 @@ export const Welcome = () => {
     <div className="py-56 flex items-center relative container">
       <div className="bg-primary hidden md:block -z-10 rounded-full w-3/4 aspect-square absolute -bottom-1/6 -left-1/4"></div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-        <div className="grid-cols-1 order-2 md:ordder-1 flex flex-col justify-center text-white">
+        <div className="grid-cols-1 order-2 md:order-1 flex flex-col justify-center text-white">
           <div className="text-2xl md:text-4xl font-bold">
             Tempat <span className="text-bold">Belajar</span> dan{" "}
             <span className="text-bold">Berlatih</span> Untuk Masuk Kampus
