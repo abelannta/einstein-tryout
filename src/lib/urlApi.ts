@@ -19,6 +19,7 @@ export const GET_IS_SUBMITED_TRYOUT = BASE_URL_API + "tryouts/check/";
 export const GET_BANKSOAL = BASE_URL_API + "banksoal/";
 export const GET_TAKEN_BANKSOAL = BASE_URL_API + "banksoal/taken";
 export const POST_TAKE_BANKSOAL = BASE_URL_API + "banksoal/take";
+export const GET_IS_SUBMITED_BANKSOAL = BASE_URL_API + "banksoal/check/";
 
 // Payment
 export const POST_PAYMENT = BASE_URL_API + "payment/";

@@ -3,24 +3,41 @@ import { Basepage } from "../../basePage";
 import { ListNomor } from "../../components/listNomor";
 import { Navigation } from "../../components/navigation";
 import { Pertanyaan } from "../../components/pertanyaan";
-import { soalDummy } from "@/lib/tryout/soal";
 import Link from "next/link";
 import { JawabanStateProps } from "@/lib/props/tryout";
 import { setCookie, parseCookies } from "nookies";
+import { postSubmitBankSoal } from "@/lib/bankSoal";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
-export const BankSoal = () => {
-  const [data, setData] = useState(soalDummy.listData);
+export const BankSoal = (props: any) => {
+  const { bsId, detailData, soalData } = props;
   const cookies = parseCookies();
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
-  const [submited, setSubmited] = useState(false);
 
-  const loopingStateJawaban = (length: number) => {
+  const handleSubmit = () => {
+    const res = postSubmitBankSoal(bsId, jawaban)
+      .then((res) => {
+        router.replace("/bank-soal/" + bsId + "/review");
+      })
+      .catch((err) => {
+        throw err;
+      });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Berhasil Submit Jawaban",
+      error: "Submit Jawaban Gagal",
+    });
+  };
+
+  const loopingStateJawaban = (length: number, soalData: any) => {
     let jawabanArr = [];
 
     for (let i = 0; i < length; i++) {
       jawabanArr.push({
-        soal_id: "",
+        soal_id: soalData[i].soal_id.toString(),
         answer: "",
       });
     }
@@ -37,25 +54,11 @@ export const BankSoal = () => {
 
       return newArr;
     });
-
-    setCookie(null, "draftBankSoal", JSON.stringify(jawaban), {
-      maxAge: 3600,
-      secure: true,
-    });
-  };
-
-  const handleSubmit = () => {
-    setSubmited(true);
   };
 
   useEffect(() => {
     // @ts-ignore
-    loopingStateJawaban(data.length, data);
-
-    if (cookies.draftBankSoal) {
-      const draft = JSON.parse(cookies.draftBankSoal);
-      setJawaban(draft);
-    }
+    loopingStateJawaban(soalData.length, soalData);
   }, []);
 
   return (
@@ -65,9 +68,8 @@ export const BankSoal = () => {
           <div className="py-44 container mx-auto">
             <div className="flex justify-between items-center text-lg md:text-2xl font-bold mb-5">
               <h3>
-                Kuis ({currentPage + 1}/{data.length})
+                Bank Soal ({currentPage + 1}/{soalData.length})
               </h3>
-              <h3>90:00</h3>
               <div className="block md:hidden">
                 <label
                   htmlFor="list-number"
@@ -82,7 +84,7 @@ export const BankSoal = () => {
             <div className="grid grid-cols-6 gap-10">
               <div className="col-span-6 md:col-span-4">
                 <Pertanyaan
-                  soal={data}
+                  soal={soalData}
                   currentPage={currentPage}
                   storingJawaban={storingJawaban}
                   jawaban={jawaban}
@@ -90,13 +92,13 @@ export const BankSoal = () => {
                   <Navigation
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
-                    length={data.length}
+                    length={soalData.length}
                   />
                 </Pertanyaan>
               </div>
               <div className="hidden md:block md:col-span-2">
                 <ListNomor
-                  length={data.length}
+                  length={soalData.length}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                   jawaban={jawaban}
@@ -104,7 +106,6 @@ export const BankSoal = () => {
                   <label
                     htmlFor="submit"
                     className="btn w-full bg-background text-bold"
-                    onClick={handleSubmit}
                   >
                     Submit
                   </label>
@@ -115,7 +116,7 @@ export const BankSoal = () => {
         </div>
       </Basepage>
       <input type="checkbox" id="submit" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
+      <div className="modal modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
             Apakah anda sudah yakin dengan semua jawaban?
@@ -124,11 +125,13 @@ export const BankSoal = () => {
             <label htmlFor="submit" className="btn bg-background text-bold">
               Cancel
             </label>
-            <Link href="/bank-soal/review">
-              <label htmlFor="submit" className="btn bg-background text-bold">
-                Submit
-              </label>
-            </Link>
+            <label
+              onClick={() => handleSubmit()}
+              htmlFor="submit"
+              className="btn bg-background text-bold"
+            >
+              Submit
+            </label>
           </div>
         </div>
       </div>
@@ -139,7 +142,7 @@ export const BankSoal = () => {
       >
         <label className="modal-box relative">
           <ListNomor
-            length={data.length}
+            length={soalData.length}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             jawaban={jawaban}

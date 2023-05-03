@@ -161,44 +161,44 @@ const TryoutSection = () => {
 };
 
 const BankSoalSection = () => {
-  const [takenTryouts, setTakenTryouts] = useState([]);
+  const [takenBankSoal, setTakenBankSoal] = useState([]);
 
-  // const getListTakenTryouts = () => {
-  //   const res = getTakenBankSoal()
-  //     .then((res) => {
-  //       console.log(res);
-  //       // setTakenTryouts(res)
-  //     })
-  //     .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
-  // };
+  const getListTakenTryouts = () => {
+    const res = getTakenBankSoal()
+      .then((res) => {
+        console.log(res);
+        setTakenBankSoal(res);
+      })
+      .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
+  };
 
-  // useEffect(() => {
-  //   getListTakenTryouts();
-  // }, []);
+  useEffect(() => {
+    getListTakenTryouts();
+  }, []);
 
   return (
     <>
-      {/* <div className="flex justify-end mb-5">
-        <Link href={`/tryout/schedule`}>
+      <div className="flex justify-end mb-5">
+        <Link href={`/bank-soal`}>
           <button className="text-sm md:text-lg p-3 w-fit flex justify-center bg-background text-bold font-bold rounded-xl">
             Tambah Bank Soal
           </button>
         </Link>
-      </div> */}
-      {takenTryouts.map((item: any, i: number) => (
+      </div>
+      {takenBankSoal.map((item: any, i: number) => (
         <div className="bg-bold rounded-xl p-5" key={i}>
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <div className="flex flex-col">
                 <div className="text-md md:text-xl font-bold">
-                  {item.to_details.to_title}
+                  {item.bs_details.bs_title}
                 </div>
                 <div className="text-gray-600">
-                  <Moment format="LLLL">{item.to_details.startsAt}</Moment>
+                  <Moment format="LLLL">{item.bs_details.createdAt}</Moment>
                 </div>
               </div>
             </div>
-            <Link href={`/tryout/${item.to_details.to_slug}/prelude`}>
+            <Link href={`/bank-soal/${item.bs_details.bs_slug}/begin`}>
               <button className="text-sm md:text-lg p-3 w-32 flex justify-center bg-background text-bold font-bold rounded-xl">
                 Lihat
               </button>
@@ -206,7 +206,7 @@ const BankSoalSection = () => {
           </div>
         </div>
       ))}
-      {takenTryouts.length === 0 && (
+      {takenBankSoal.length === 0 && (
         <div className="flex items-center justify-center">
           <h3 className="text-xl font-light">Tidak ada data ditemukan</h3>
         </div>
