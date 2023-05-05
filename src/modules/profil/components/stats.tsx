@@ -9,7 +9,7 @@ export const StatsUser = () => {
             <BiTask className="w-8 h-8" />
           </div>
           <div className="stat-title">Total Tryout</div>
-          <div className="stat-value">10</div>
+          <div className="stat-value">-</div>
           <div className="stat-desc">All time</div>
         </div>
 
@@ -18,7 +18,7 @@ export const StatsUser = () => {
             <BiNotepad className="w-8 h-8" />
           </div>
           <div className="stat-title">Total Bank Soal</div>
-          <div className="stat-value">20</div>
+          <div className="stat-value">-</div>
           <div className="stat-desc">All time</div>
         </div>
 
@@ -27,7 +27,7 @@ export const StatsUser = () => {
             <BiTaskX className="w-8 h-8" />
           </div>
           <div className="stat-title">Tryout Belum Selesai</div>
-          <div className="stat-value">1</div>
+          <div className="stat-value">-</div>
           <div className="stat-desc"></div>
         </div>
       </div>

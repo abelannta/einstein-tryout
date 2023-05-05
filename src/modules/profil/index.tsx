@@ -68,15 +68,15 @@ export const Profile = () => {
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center">
                       <BiBuildingHouse className="mr-3" />
-                      <p>Universitas Negeri Malang</p>
+                      <p>-</p>
                     </div>
                     <div className="flex items-center">
                       <BiMap className="mr-3" />
-                      <p>Malang</p>
+                      <p>-</p>
                     </div>
                     <div className="flex items-center">
                       <BiMailSend className="mr-3" />
-                      <p>abelananta9@gmail.com</p>
+                      <p>{user?.user_email}</p>
                     </div>
                   </div>
                 </div>
