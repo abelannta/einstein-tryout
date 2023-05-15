@@ -142,11 +142,10 @@ export const PreludeTryout = (props: any) => {
                 ))}
               </div>
             </div>
-
             <button
               onClick={handleStart}
               className="btn btn-primary w-full"
-              // disabled={currentTime > detailData?.startsAt ? false : true}
+              disabled={currentTime > detailData?.startsAt ? false : true}
             >
               Mulai
             </button>
