@@ -1,5 +1,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/legacy/image";
+import logo from "@/public/assets/logo.png";
 
 const UserNav = dynamic(() => import("@/modules/components/userNavbar"), {
   ssr: false,
@@ -47,10 +49,13 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <p className="btn btn-ghost normal-case text-xl">
+        <div className="flex items-center font-bold normal-case text-xl px-4">
+          <div className="hidden md:block w-10 aspect-square">
+            <Image src={logo} />
+          </div>
           Nine
-          <span className="text-bold">Intelligence</span>
-        </p>
+          <div className="text-bold">Intelligence</div>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

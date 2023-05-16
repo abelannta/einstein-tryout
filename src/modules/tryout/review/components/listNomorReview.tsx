@@ -20,9 +20,7 @@ export const ListNomorReview = (props: listNomorReviewProps) => {
           key={i}
           className={`border border-gray-300 flex justify-center items-center p-3 rounded-xl ${
             i === currentPage ? `border-background font-bold` : ""
-          } ${
-            review[i]?.details === "correct" ? "bg-green-200" : "bg-red-200"
-          }`}
+          } ${review[i]?.details === "correct" ? "bg-correct" : "bg-false"}`}
           onClick={() => handleNumberClick(i)}
         >
           {i + 1}

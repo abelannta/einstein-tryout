@@ -24,11 +24,11 @@ export const PertanyaanReview = (props: PertanyaanReviewProps) => {
             className={twMerge(
               `flex items-center border border-gray-300 p-5 mb-3 rounded-xl w-full ${
                 soal[currentPage].user_ans === item
-                  ? "bg-red-200 border-background border-2 shadow-md"
+                  ? "bg-false border-background border-2 shadow-md"
                   : ""
               } ${
                 item === soal[currentPage].soal_detail.correctAns
-                  ? "bg-green-200"
+                  ? "bg-correct"
                   : ""
               }`
             )}

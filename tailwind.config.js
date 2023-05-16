@@ -18,7 +18,10 @@ module.exports = {
         background: "#001D3D",
         primary: "#003566",
         bold: "#FFC300",
-        paper: "#FFF3B6",
+        boldbtn: "#FFD60A",
+        paper: "#FEF0BE",
+        false: "#F79B9B",
+        correct: "#9EE09D",
       },
     },
     container: {
@@ -32,7 +35,7 @@ module.exports = {
         light: {
           ...require("daisyui/src/colors/themes")["[data-theme=light]"],
           primary: "#003566",
-          secondary: "#FFC300",
+          secondary: "#FFD60A",
         },
       },
     ],
