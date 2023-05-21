@@ -51,8 +51,8 @@ export const OverviewProfile = () => {
   const getListRiwayat = () => {
     const res = getHistory()
       .then((res) => {
-        setRiwayat(res);
-        listingChart(res);
+        setRiwayat(res.to_content);
+        listingChart(res.to_content);
       })
       .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
   };

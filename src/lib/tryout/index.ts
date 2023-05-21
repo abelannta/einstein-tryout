@@ -60,12 +60,10 @@ export const getReviewTryout = async (to_slug: string) => {
 
 // POST
 
-export const postTakeTryout = async (to_slug: string, tipe: number) => {
+export const postTakeTryout = async (to_slug: string) => {
   const res = await axios.post(
     POST_TAKE_TRYOUT + "/" + to_slug,
-    {
-      type: tipe,
-    },
+    {},
     {
       headers: {
         Authorization: `Bearer ${token}`,

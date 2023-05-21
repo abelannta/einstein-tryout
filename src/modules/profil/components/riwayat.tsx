@@ -9,7 +9,7 @@ export const Riwayat = () => {
   const getListRiwayat = () => {
     const res = getHistory()
       .then((res) => {
-        setRiwayat(res);
+        setRiwayat(res.to_content);
       })
       .catch((err) => toast.error("Terjadi Kesalahan Dalam Fetch Data"));
   };

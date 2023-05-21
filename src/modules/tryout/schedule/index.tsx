@@ -11,7 +11,7 @@ export const ScheduleTryout = (props: any) => {
   const [tryouts, setTryouts] = useState(data);
 
   const handleTakeTryout = (to_slug: string) => {
-    const res = postTakeTryout(to_slug, 1)
+    const res = postTakeTryout(to_slug)
       .then((res) => {})
       .catch((err) => {
         console.log(err);
@@ -19,8 +19,7 @@ export const ScheduleTryout = (props: any) => {
       });
     toast.promise(res, {
       loading: "Loading...",
-      success:
-        "Berhasil Mendaftar Tryout! Silahkan cek pada halaman Kegiatanku",
+      success: "Berhasil Mendaftar Tryout!",
       error: "Gagal Menambahkan Tryout!",
     });
   };

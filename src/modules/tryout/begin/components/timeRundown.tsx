@@ -3,19 +3,20 @@ import { toast } from "react-hot-toast";
 import Countdown, { zeroPad } from "react-countdown";
 
 interface CoundownProps {
+  handleComplete: () => void;
   milisecs: number;
 }
 
 export const TimeRundown = (props: CoundownProps) => {
-  const { milisecs } = props;
+  const { milisecs, handleComplete } = props;
 
   const time = useMemo(() => {
     return Date.now() + milisecs;
-  }, []);
+  }, [milisecs]);
 
   const renderer = ({ hours, minutes, seconds, completed }: any) => {
     if (completed) {
-      console.log("Completed");
+      handleComplete;
     } else {
       return (
         <h3>

@@ -9,12 +9,14 @@ import { toast } from "react-hot-toast";
 import { setCookie, parseCookies } from "nookies";
 import { TimeRundown } from "./components/timeRundown";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 export const Tryout = (props: any) => {
   const { tryoutId, detailData, soalData, draftData } = props;
   const cookies = parseCookies();
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [soal, setSoal] = useState([]);
   const [jawaban, setJawaban] = useState<JawabanStateProps[]>([]);
   const [duration, setDuration] = useState(
     detailData?.duration ? detailData?.duration * 60 * 1000 : 360000
@@ -75,6 +77,7 @@ export const Tryout = (props: any) => {
   });
 
   useEffect(() => {
+    console.log(soalData);
     const intervalId = setInterval(() => {
       handleUpdateDraft(latestJawaban.current);
     }, 60000);
@@ -83,11 +86,23 @@ export const Tryout = (props: any) => {
   }, []);
 
   useEffect(() => {
+    const randomizeSoal = soalData;
+
+    randomizeSoal.sort((a: any, b: any) => {
+      const indexA = draftData.soal_struct.indexOf(a.soal_id.toString());
+      const indexB = draftData.soal_struct.indexOf(b.soal_id.toString());
+
+      return indexA - indexB;
+    });
+
+    setSoal(randomizeSoal);
+
     // @ts-ignore
     if (draftData.user_answers && draftData.user_answers.length > 0) {
       setJawaban(draftData.user_answers);
+      setDuration(moment(draftData.duration).diff(moment()));
     } else {
-      loopingStateJawaban(soalData.length, soalData);
+      loopingStateJawaban(randomizeSoal.length, randomizeSoal);
     }
   }, []);
 
@@ -100,7 +115,10 @@ export const Tryout = (props: any) => {
               <h3>
                 Kuis ({currentPage + 1}/{soalData.length})
               </h3>
-              <TimeRundown milisecs={duration} />
+              <TimeRundown
+                milisecs={duration}
+                handleComplete={() => handleSubmit}
+              />
               <div className="block md:hidden">
                 <label
                   htmlFor="list-number"

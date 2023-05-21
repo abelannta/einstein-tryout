@@ -45,6 +45,7 @@ export const PreludeTryout = (props: any) => {
   const handleStart = () => {
     const res = postStartTryout(tryoutId)
       .then((res) => {
+        console.log(res);
         router.push("/tryout/[tryoutId]/begin", `/tryout/${tryoutId}/begin`);
       })
       .catch((err) => {
