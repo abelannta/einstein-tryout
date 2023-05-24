@@ -95,12 +95,12 @@ export const Tryout = (props: any) => {
       return indexA - indexB;
     });
 
+    setDuration(moment(draftData.duration).diff(moment()));
     setSoal(randomizeSoal);
 
     // @ts-ignore
     if (draftData.user_answers && draftData.user_answers.length > 0) {
       setJawaban(draftData.user_answers);
-      setDuration(moment(draftData.duration).diff(moment()));
     } else {
       loopingStateJawaban(randomizeSoal.length, randomizeSoal);
     }

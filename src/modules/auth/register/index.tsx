@@ -41,11 +41,16 @@ const RegisterPage = (props: any) => {
       formData.phone
     )
       .then((res) => {
-        console.log(res);
-        toast.success("Berhasil Membuat Akun");
         router.replace("/auth/login");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        throw err;
+      });
+    toast.promise(registerPromise, {
+      loading: "Loading...",
+      success: "Register Berhasil",
+      error: "Terjadi Kesalahan pada Register",
+    });
   };
 
   return (
